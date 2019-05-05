@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itcase.project.Dao.CookieMapper">
+    <resultMap id="BaseResultMap" type="cookie">
+        <id column="cookie_id" jdbcType="BIGINT" property="cId" />
+        <result column="cookie_name" jdbcType="VARCHAR" property="cName" />
+        <result column="cookie_introduce" jdbcType="VARCHAR" property="cIntroduce" />
+        <result column="cookie_img_path" jdbcType="VARCHAR" property="cImagePath" />
+        <result column="cookie_other" jdbcType="VARCHAR" property="cOther" />
+        <result column="cookie_type" jdbcType="VARCHAR" property="cType"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    cookie_id, cookie_name, cookie_introduce, cookie_img_path, cookie_other,cookie_type
+    </sql>
+    <select id="selectCookieById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from COOKIE_INFO
+        where cookie_id = #{id,jdbcType=BIGINT}
+    </select>
+
+    <select id="selectAllCookies" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from COOKIE_INFO
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from COOKIE_INFO
+    where cookie_id = #{id,jdbcType=BIGINT}
+  </delete>
+
+    <!--
+    <insert id="insertCookie" parameterType="com.vipkid.lp.student.provider.entity.Cookie">
+    insert into COOKIE_INFO (cookie_id, cookie_name, cookie_introduce,
+      cookie_img_path, cookie_other
+      )
+    values (#{cId,jdbcType=BIGINT}, #{cName,jdbcType=VARCHAR}, #{cIntroduce,jdbcType=VARCHAR},
+      #{cImagePath,jdbcType=VARCHAR}, #{cOther,jdbcType=VARCHAR}
+      )
+  </insert>
+  -->
+
+    <insert id="insertCookie" parameterType="cookie" useGeneratedKeys="true" keyColumn="cookie_id" >
+        insert into COOKIE_INFO
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="cId != null">
+                cookie_id,
+            </if>
+            <if test="cName != null">
+                cookie_name,
+            </if>
+            <if test="cIntroduce != null">
+                cookie_introduce,
+            </if>
+            <if test="cImagePath != null">
+                cookie_img_path,
+            </if>
+            <if test="cOther != null">
+                cookie_other,
+            </if>
+            <if test="cType != null">
+                cookie_type,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="cId != null">
+                #{cId,jdbcType=VARCHAR},
+            </if>
+            <if test="cName != null">
+                #{cName,jdbcType=VARCHAR},
+            </if>
+            <if test="cIntroduce != null">
+                #{cIntroduce,jdbcType=VARCHAR},
+            </if>
+            <if test="cImagePath != null">
+                #{cImagePath,jdbcType=VARCHAR},
+            </if>
+            <if test="cOther != null">
+                #{cOther,jdbcType=VARCHAR},
+            </if>
+            <if test="cType != null">
+                #{cType,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="cookie">
+        update COOKIE_INFO
+        <set>
+            <if test="cName != null">
+                cookie_name = #{cName,jdbcType=VARCHAR},
+            </if>
+            <if test="cIntroduce != null">
+                cookie_introduce = #{cIntroduce,jdbcType=VARCHAR},
+            </if>
+            <if test="cImagePath != null">
+                cookie_img_path = #{cImagePath,jdbcType=VARCHAR},
+            </if>
+            <if test="cOther != null">
+                cookie_other = #{cOther,jdbcType=VARCHAR},
+            </if>
+            <if test="cType !=null">
+                cookie_type = #{cType,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where cookie_id = #{cId,jdbcType=BIGINT}
+    </update>
+</mapper>

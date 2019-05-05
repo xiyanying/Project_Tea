@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itcase.project.Dao.UserMapper">
+
+
+    <select id="getResult" parameterType="java.lang.String" resultType="java.lang.Integer">
+        select COUNT(*) from manager_user where
+        <if test="passWord!=null" >
+            user_name = #{userName,jdbcType=VARCHAR} and user_password = #{passWord,jdbcType=VARCHAR}
+        </if>
+    </select>
+
+    <!--
+    <insert id="insertCookie" parameterType="com.vipkid.lp.student.provider.entity.Cookie">
+    insert into COOKIE_INFO (cookie_id, cookie_name, cookie_introduce,
+      cookie_img_path, cookie_other
+      )
+    values (#{cId,jdbcType=BIGINT}, #{cName,jdbcType=VARCHAR}, #{cIntroduce,jdbcType=VARCHAR},
+      #{cImagePath,jdbcType=VARCHAR}, #{cOther,jdbcType=VARCHAR}
+      )
+  </insert>
+  -->
+
+</mapper>
