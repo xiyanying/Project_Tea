@@ -178,11 +178,17 @@
                             <td>${tcookie.cImagePath}</td>
                             <td>${tcookie.cOther}</td>
                             <td>${tcookie.cType}</td>
-                            <td><a href="${pageContext.request.contextPath}/info/get/cookie?id=${tcookie.cId}">查看</a> <a href="${pageContext.request.contextPath}/info//get/update?id=${tcookie.cId}">修改</a> <a href="${pageContext.request.contextPath}/info/delete/cookie?id=${tcookie.cId}">删除</a></td>
+                            <td><a href="${pageContext.request.contextPath}/info/get/cookie?id=${tcookie.cId}">查看</a> <a href="${pageContext.request.contextPath}/info/get/update?id=${tcookie.cId}">修改</a> <a href="${pageContext.request.contextPath}/info/delete/cookie?id=${tcookie.cId}">删除</a></td>
                         </tr>
                     </c:forEach>
 
                 </table>
+                <a href="${pageContext.request.contextPath}/info/jump/jsp">糕点添加</a>
+                <a href="${pageContext.request.contextPath}/info/getAll/cookie?type=all">所有</a>
+                <c:forEach items="${pageCount}" var="tlist">
+                    <a href="${pageContext.request.contextPath}/info/getAll/cookie?page=${tlist}&type=${type}">${tlist}</a>
+                </c:forEach>
+                <a href="${pageContext.request.contextPath}/info/getAll/cookie?type=cookie">糕点</a> <a href="${pageContext.request.contextPath}/info/getAll/cookie?type=fruit">水果</a> <a href="${pageContext.request.contextPath}/info/getAll/cookie?type=tea">茶点</a>
             </div>
         </li>
     </ul>
