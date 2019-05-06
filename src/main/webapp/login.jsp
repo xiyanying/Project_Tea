@@ -17,23 +17,20 @@
             padding: 0;
         }
         #wrap {
-            height: 600px;
-            width: 100;
-            background-image: url(4.jpg);
-            background-repeat: no-repeat;
-            background-position: center center;
-            position: relative;
+            height: 455px;
+            width: 100%;
+            background-image: url(static/img/bg.jpg);
         }
         #head {
-            height: 120px;
-            width: 100;
+            height: 100px;
+            width: 100%;
             background-color: #66CCCC;
             text-align: center;
             position: relative;
         }
         #foot {
-            width: 100;
-            height: 126px;
+            width: 100%;
+            height: 90px;
             background-color: #CC9933;
             position: relative;
         }
@@ -91,6 +88,7 @@
             margin-right: auto;
             margin-bottom: 0px;
             margin-left: auto;
+
         }
 
 
@@ -98,10 +96,10 @@
             font-family: "宋体";
             color: #FFFFFF;
             position: absolute;
-            top: 50%;
+            top: 40%;
             left: 50%;
             transform: translate(-50%, -50%);  /* 使用css3的transform来实现 */
-            font-size: 36px;
+            font-size: 34px;
             height: 40px;
             width: 30%;
         }
@@ -110,7 +108,7 @@
             font-family: "宋体";
             color: #FFFFFF;
             position: absolute;
-            top: 50%;
+            top: 40%;
             left: 50%;
             transform: translate(-50%, -50%);  /* 使用css3的transform来实现 */
             height: 60px;
@@ -130,7 +128,7 @@
             height: 24px;
             margin-left: 22px;
             vertical-align: middle;
-            background-image: url(/static/img/3.png);
+            background-image: url(static/img/3.jpg);
             background-repeat: no-repeat;
             vertical-align: middle;
             margin-right: 5px;
@@ -142,22 +140,11 @@
             height: 24px;
             margin-left: 22px;
             vertical-align: middle;
-            background-image: url(%E5%9C%B0%E5%9D%80.png);
             background-repeat: no-repeat;
             vertical-align: middle;
             margin-right: 5px;
         }
-        .copyright .img .icon2 {
-            display: inline-block;
-            width: 24px;
-            height: 24px;
-            margin-left: 22px;
-            vertical-align: middle;
-            background-image: url(%E8%81%94%E7%B3%BB%E6%96%B9%E5%BC%8F.png);
-            background-repeat: no-repeat;
-            vertical-align: middle;
-            margin-right: 5px;
-        }
+
         #foot .copyright p {
             height: 24px;
             width: 100%;
@@ -168,7 +155,6 @@
 <body>
 <div class="header" id="head">
     <div class="title">茶歇后台管理系统</div>
-
 </div>
 
 <div class="wrap" id="wrap">
@@ -190,14 +176,14 @@
                    placeholder="输入用户密码" name="passWord" />
         </div>
         <div class="logC">
-            <a href="index.html" target="_self"><button>登 录</button></a>
+            <a href="info/getAll/cookie" target="_self"><button>登 录</button></a>
         </div>
     </div>
 </div>
 
 <div class="footer" id="foot">
     <div class="copyright">
-        <p>Copyright © 2018 Xiyanying.com Inc. All Rights Reserved.</p>
+        <p>Copyright © 2019 Xiyanying.com Inc. All Rights Reserved.</p>
         <div class="img">
             <i class="icon"></i><span>联系邮箱：xiyanying@163.com</span>
         </div>
@@ -206,9 +192,6 @@
             <i class="icon1"></i><span>联系地址：西安石油大学</span>
         </div>
 
-        <div class="img">
-            <i class="icon2"></i><span>联系电话：13329052081</span>
-        </div>
     </div>
 
 </div>
