@@ -23,6 +23,11 @@
         select
         <include refid="Base_Column_List" />
         from COOKIE_INFO
+        <if test="type!='all'">
+            where cookie_type = #{type,jdbcType=VARCHAR}
+        </if>
+        limit ${map.start} , ${map.end}
+
     </select>
 
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
@@ -105,4 +110,11 @@
         </set>
         where cookie_id = #{cId,jdbcType=BIGINT}
     </update>
+
+    <select id="getTotal" parameterType="java.lang.String" resultType="java.lang.Integer">
+        select count(*) from COOKIE_INFO
+        <if test="type!='all'">
+            where cookie_type = #{type,jdbcType=VARCHAR}
+        </if>
+    </select>
 </mapper>

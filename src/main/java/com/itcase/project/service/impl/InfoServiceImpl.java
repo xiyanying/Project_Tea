@@ -1,5 +1,6 @@
 package com.itcase.project.service.impl;
 
+import com.alibaba.fastjson.JSONObject;
 import com.itcase.project.Dao.CookieMapper;
 import com.itcase.project.enetity.Cookie;
 import com.itcase.project.service.InfoService;
@@ -8,7 +9,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 @Service
@@ -60,7 +63,24 @@ public class InfoServiceImpl implements InfoService {
     }
 
     @Override
-    public List<Cookie> selectAllService() {
-        return mapper.selectAllCookies();
+    public JSONObject selectAllService(JSONObject jsonObject) {
+        JSONObject object = new JSONObject();
+        String type = (String) jsonObject.get("type");
+        Integer page = (Integer) jsonObject.get("page");
+        Integer pagesize = (Integer)jsonObject.get("pagesize");
+        Map<String,Object> map = new HashMap();
+        Integer start = (page-1) * pagesize;
+        map.put("start",start);
+        map.put("end",pagesize);
+        Integer size = null;
+        if("all".equals(type)){
+            size = mapper.getTotal(type);
+        }else {
+            size = mapper.getTotal(type);
+        }
+        List<Cookie> cookies = mapper.selectAllCookies(map,type);
+        object.put("total",size);
+        object.put("cookies",cookies);
+        return object;
     }
 }
