@@ -138,7 +138,13 @@
                     </c:forEach>
 
                     <a href="${pageContext.request.contextPath}/info/jump/jsp">糕点添加</a>
+                    <a href="${pageContext.request.contextPath}/info/getAll/cookie?type=all">所有</a>
                 </table>
+                <c:forEach items="${pageCount}" var="tlist">
+                    <a href="${pageContext.request.contextPath}/info/getAll/cookie?page=${tlist}&type=${type}">${tlist}</a>
+                </c:forEach>
+
+                <a href="${pageContext.request.contextPath}/info/getAll/cookie?type=cookie">糕点</a> <a href="${pageContext.request.contextPath}/info/getAll/cookie?type=fruit">水果</a> <a href="${pageContext.request.contextPath}/info/getAll/cookie?type=tea">茶点</a>
             </div>
         </li>
     </ul>

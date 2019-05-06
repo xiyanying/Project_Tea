@@ -1,5 +1,7 @@
 package com.itcase.project.controller;
 
+import com.alibaba.fastjson.JSONObject;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.itcase.project.enetity.Cookie;
 import com.itcase.project.enetity.CookieVo;
 import com.itcase.project.enetity.Result;
@@ -14,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.sound.midi.SoundbankResource;
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -71,8 +74,26 @@ public class InfoController {
     }
 
     @RequestMapping(value = "/getAll/cookie",method = RequestMethod.GET)
-    public ModelAndView selectAllCookie(ModelAndView modelAndView){
-        List<Cookie> cookies = infoService.selectAllService();
+    public ModelAndView selectAllCookie(ModelAndView modelAndView, @RequestParam(defaultValue = "all") String type,@RequestParam(defaultValue = "1") Integer page,@RequestParam(defaultValue = "5") Integer pagesize){
+
+        JSONObject para = new JSONObject();
+        para.put("type",type);
+        para.put("page",page);
+        para.put("pagesize",pagesize);
+        JSONObject object = infoService.selectAllService(para);
+        Integer size =(Integer) object.get("total");
+        List<Cookie> cookies = (List<Cookie>)object.get("cookies");
+
+        int pageCount = size / pagesize;
+        if(size % pagesize > 0){
+            pageCount++;
+        }
+        List<Integer> list = new ArrayList<>() ;
+        for(int i = 1; i<=pageCount;i++){
+            list.add(i);
+        }
+        modelAndView.addObject("type",type);
+        modelAndView.addObject("pageCount",list);
         modelAndView.addObject("cookies",cookies);
         modelAndView.setViewName("/WEB-INF/jsp/main.jsp");
        return modelAndView;

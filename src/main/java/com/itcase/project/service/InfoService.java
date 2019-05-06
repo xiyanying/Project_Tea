@@ -1,5 +1,6 @@
 package com.itcase.project.service;
 
+import com.alibaba.fastjson.JSONObject;
 import com.itcase.project.enetity.Cookie;
 
 import java.util.List;
@@ -35,5 +36,7 @@ public interface InfoService {
      * 查询所有糕点信息
      * @return list
      */
-    List<Cookie> selectAllService();
+    JSONObject selectAllService(JSONObject jsonObject);
+
+
 }
