@@ -25,6 +25,7 @@
             border: 1px solid seashell;
             position: absolute;
             left:60px;
+            top: 10%;
         }
         .head{
             background-color: darkkhaki;
@@ -32,9 +33,10 @@
 
         a{
             text-decoration: none;
+            color: rgb(141, 67, 13);
         }
-        a:link,a::after{
-            color:saddlebrown;
+        a:link,a::after,a:active{
+            color:rgb(141, 67, 13);
         }
         a:hover,a:active{
             color: burlywood;
@@ -82,6 +84,7 @@
             position: absolute;
             top: 5px;
             color: aliceblue;
+            padding-left: 20px;
         }
         .top_welcome{
             width: 200px;
@@ -92,6 +95,36 @@
             right: 10%;
             padding-top: 13px;
         }
+        .left_query{
+            width: 123px;
+            height: 35px;
+            color: rgb(141, 67, 13);
+            font-size: 20px;
+            position: absolute;
+            top: 150px;
+            left: 90px;
+            text-align: center;
+            display: block;
+            padding-top: 13px;
+            border-radius: 5px;
+            background-color: white;
+        }
+        .left_add{
+            width: 123px;
+            height: 35px;
+            color: rgb(141, 67, 13);
+            font-size: 20px;
+            position: absolute;
+            top: 250px;
+            left: 90px;
+            padding-top: 13px;
+            text-align: center;
+            display: block;
+            border-radius: 5px;
+            background-color: white;
+        }
+
+
     </style>
 </head>
 <body>
@@ -109,7 +142,19 @@
             <div class="manager_left">
 
                 <div class="left_btn">
-
+                    <ul>
+                        <li>
+                            <div class="left_query">
+                                <a href="${pageContext.request.contextPath}/info/getAll/cookie">首页</a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="left_add">
+                                <a href="${pageContext.request.contextPath}/info/jump/jsp">
+                                    添加</a>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
             </div>>
         </li>
@@ -137,7 +182,6 @@
                         </tr>
                     </c:forEach>
 
-                    <a href="${pageContext.request.contextPath}/info/jump/jsp">糕点添加</a>
                 </table>
             </div>
         </li>
