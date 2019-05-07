@@ -29,4 +29,6 @@ public interface CookieMapper {
 
     @Transactional(readOnly = false)
     public Integer getTotal(@Param("type") String type);
+
+    public List<Cookie> getBatch(List<Integer> cids);
 }

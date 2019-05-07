@@ -117,4 +117,12 @@
             where cookie_type = #{type,jdbcType=VARCHAR}
         </if>
     </select>
+
+    <select id="getBatch" resultMap="BaseResultMap">
+        select * from COOKIE_INFO
+        where cookie_id in
+        <foreach collection="list" item="id" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </select>
 </mapper>

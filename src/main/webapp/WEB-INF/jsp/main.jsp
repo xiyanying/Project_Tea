@@ -11,6 +11,43 @@
 <head>
     <meta charset="utf-8">
     <title>糕点首页</title>
+    <script type="text/javascript">
+        function aa() {
+            var bb = "";
+            var temp = "";
+            var a = document.getElementsByName("ids");
+            for (var i = 0; i <a.length;i++){
+                if(a[i].checked){
+                    temp = a[i].value;
+                    bb = temp + "," + bb;
+                }
+            }
+            alert(bb)
+
+            $.ajax({
+                url:"http://localhost:8080/xyy/tom/pitch",    //请求的url地址
+                dataType:"json",   //返回格式为json
+                async:true,//请求是否异步，默认为异步，这也是ajax重要特性
+                data:{"id":bb},    //参数值
+                type:"GET",   //请求方式
+                beforeSend:function(){
+                    //请求前的处理
+                },
+                success:function(req){
+                    //请求成功时处理
+                    alert("已添加")
+                },
+                complete:function(){
+                    //请求完成的处理
+                    alert("已添加")
+                },
+                error:function(){
+                    //请求出错处理
+                }
+            });
+
+        }
+    </script>
     <style  type="text/css">
         *{
             margin: 0px;
@@ -235,6 +272,7 @@
                 </div>
                 <table class="tab">
                     <tr class="head">
+                        <td>复选框</td>
                         <td>序号</td>
                         <td>名称</td>
                         <td>介绍</td>
@@ -245,6 +283,7 @@
                     </tr>
                     <c:forEach items="${cookies}" var="tcookie" varStatus="status">
                         <tr>
+                            <td><input type="checkbox" name="ids" value="${tcookie.cId}" /></td>
                             <td>${status.count}</td>
                             <td>${tcookie.cName}</td>
                             <td>${tcookie.cIntroduce}</td>
@@ -282,6 +321,11 @@
                         <li>
                             <div class="page_tea_link">
                                 <a href="${pageContext.request.contextPath}/info/getAll/cookie?type=tea">茶点</a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="page_tea_link">
+                               <input type="button" onclick="aa()" value="提交选中"/>
                             </div>
                         </li>
                     </ul>

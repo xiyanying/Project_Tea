@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itcase.project.Dao.TomCookieMapper">
+    <resultMap id="BaseResultMap" type="tomCookie">
+        <id column="cookie_id" jdbcType="BIGINT" property="cId" />
+        <result column="cookie_name" jdbcType="VARCHAR" property="cName" />
+        <result column="cookie_introduce" jdbcType="VARCHAR" property="cIntroduce" />
+        <result column="cookie_img_path" jdbcType="VARCHAR" property="cImagePath" />
+        <result column="cookie_other" jdbcType="VARCHAR" property="cOther" />
+        <result column="cookie_type" jdbcType="VARCHAR" property="cType"/>
+        <result column="cookie_creatime" jdbcType="VARCHAR" property="createTime"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    cookie_id, cookie_name, cookie_introduce, cookie_img_path, cookie_other,cookie_type,cookie_creatime
+    </sql>
+
+
+
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from work_tomookie
+    where cookie_id = #{id,jdbcType=BIGINT}
+  </delete>
+
+    <!--
+    <insert id="insertCookie" parameterType="com.vipkid.lp.student.provider.entity.Cookie">
+    insert into COOKIE_INFO (cookie_id, cookie_name, cookie_introduce,
+      cookie_img_path, cookie_other
+      )
+    values (#{cId,jdbcType=BIGINT}, #{cName,jdbcType=VARCHAR}, #{cIntroduce,jdbcType=VARCHAR},
+      #{cImagePath,jdbcType=VARCHAR}, #{cOther,jdbcType=VARCHAR}
+      )
+  </insert>
+  -->
+
+    <insert id="batchCookie" parameterType="tomCookie" >
+        insert into work_tomcookie values
+        <foreach collection="list" index="index" item="item" separator="," open="" close="">
+            (#{item.cId},#{item.cName},#{item.cIntroduce},#{item.cImagePath},#{item.cOther},#{item.cType},#{item.createTime})
+        </foreach>
+
+    </insert>
+
+
+</mapper>
