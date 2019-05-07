@@ -6,7 +6,6 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
-<!doctype html>
 <html>
 <head>
     <meta charset="utf-8">
@@ -20,6 +19,7 @@
             height: 455px;
             width: 100%;
             background-image: url(static/img/bg.jpg);
+            opacity: 0.6;
         }
         #head {
             height: 100px;
@@ -166,12 +166,12 @@
         </div>
         <!-- 输入框 -->
         <div class="lgD">
-            <img src="img/logName.png" width="20" height="20" alt=""/>
+            <img src="static/img/5.png" width="20" height="20" alt=""/>
             <input type="text"
                    placeholder="输入用户名" name="userName" />
         </div>
         <div class="lgD">
-            <img src="img/logPwd.png" width="20" height="20" alt=""/>
+            <img src="static/img/5.png" width="20" height="20" alt=""/>
             <input type="password"
                    placeholder="输入用户密码" name="passWord" />
         </div>
@@ -187,15 +187,10 @@
         <div class="img">
             <i class="icon"></i><span>联系邮箱：xiyanying@163.com</span>
         </div>
-
         <div class="img">
             <i class="icon1"></i><span>联系地址：西安石油大学</span>
         </div>
-
     </div>
-
 </div>
-
-
 </body>
 </html>

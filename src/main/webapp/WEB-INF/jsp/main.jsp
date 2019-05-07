@@ -9,7 +9,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>Title</title>
+    <meta charset="utf-8">
+    <title>糕点首页</title>
     <style  type="text/css">
         *{
             margin: 0px;
@@ -48,7 +49,7 @@
             width: 100%;
             height:40px;
         }
-        .manager_main_bottom ul, .left_btn ul{
+        .manager_main_bottom ul, .left_btn ul,.page_cookie ul{
             list-style-type: none;
         }
         ul li{
@@ -56,6 +57,9 @@
             display: inline;
             margin: 0;
             padding: 0;
+        }
+        .page_cookie ul li{
+            display: inline-block;
         }
         .manager_left{
             width: 200px;
@@ -123,8 +127,74 @@
             border-radius: 5px;
             background-color: white;
         }
-
-
+        .page_cookie{
+            width: 50%;
+            height: 50px;
+            position: absolute;
+            top:450px;
+            left:240px;
+        }
+        .page_all_link{
+            width: 80px;
+            height: 30px;
+            margin:  10px;
+            text-align: center;
+            font-size: 18px;
+            padding-top: 5px;
+            background-color: black;
+            border-radius: 3px;
+        }
+        .page_count_link{
+            width: 80px;
+            height: 30px;
+            margin:  10px;
+            text-align: center;
+            font-size: 18px;
+            padding-top: 6px;
+            background-color: black;
+            border-radius: 3px;
+        }
+        .page_cook_link{
+            width: 80px;
+            height: 30px;
+            margin:  10px;
+            text-align: center;
+            font-size: 18px;
+            padding-top: 6px;
+            background-color: black;
+            border-radius: 3px;
+        }
+        .page_fruit_link{
+            width: 80px;
+            height: 30px;
+            margin:  10px;
+            text-align: center;
+            font-size: 18px;
+            padding-top: 6px;
+            background-color: black;
+            border-radius: 3px;
+        }
+        .page_tea_link{
+            width: 80px;
+            height: 30px;
+            margin:  10px;
+            text-align: center;
+            font-size: 18px;
+            padding-top: 6px;
+            background-color: black;
+            border-radius: 3px;
+        }
+        .all_title{
+            width: 30%;
+            height: 50px;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 22px;
+            color: brown;
+            text-align: center;
+            position: absolute;
+            top:20px;
+            left: 30%;
+        }
     </style>
 </head>
 <body>
@@ -160,6 +230,9 @@
         </li>
         <li>
             <div class="manager_right">
+                <div class="all_title">
+                    <p><b>库存信息显示</b></p>
+                </div>
                 <table class="tab">
                     <tr class="head">
                         <td>序号</td>
@@ -181,14 +254,39 @@
                             <td><a href="${pageContext.request.contextPath}/info/get/cookie?id=${tcookie.cId}">查看</a> <a href="${pageContext.request.contextPath}/info/get/update?id=${tcookie.cId}">修改</a> <a href="${pageContext.request.contextPath}/info/delete/cookie?id=${tcookie.cId}">删除</a></td>
                         </tr>
                     </c:forEach>
-
                 </table>
-                <a href="${pageContext.request.contextPath}/info/jump/jsp">糕点添加</a>
-                <a href="${pageContext.request.contextPath}/info/getAll/cookie?type=all">所有</a>
-                <c:forEach items="${pageCount}" var="tlist">
-                    <a href="${pageContext.request.contextPath}/info/getAll/cookie?page=${tlist}&type=${type}">${tlist}</a>
-                </c:forEach>
-                <a href="${pageContext.request.contextPath}/info/getAll/cookie?type=cookie">糕点</a> <a href="${pageContext.request.contextPath}/info/getAll/cookie?type=fruit">水果</a> <a href="${pageContext.request.contextPath}/info/getAll/cookie?type=tea">茶点</a>
+                <div class="page_cookie">
+                    <ul>
+                        <li>
+                            <div class="page_all_link">
+                                <a href="${pageContext.request.contextPath}/info/getAll/cookie?type=all">所有</a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="page_count_link">
+                                <c:forEach items="${pageCount}" var="tlist">
+                                    <a href="${pageContext.request.contextPath}/info/getAll/cookie?page=${tlist}&type=${type}">${tlist}</a>
+                                </c:forEach>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="page_cook_link">
+                                <a href="${pageContext.request.contextPath}/info/getAll/cookie?type=cookie">糕点</a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="page_fruit_link">
+                                <a href="${pageContext.request.contextPath}/info/getAll/cookie?type=fruit">水果</a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="page_tea_link">
+                                <a href="${pageContext.request.contextPath}/info/getAll/cookie?type=tea">茶点</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
             </div>
         </li>
     </ul>
