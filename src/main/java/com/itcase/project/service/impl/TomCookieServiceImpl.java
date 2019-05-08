@@ -3,6 +3,8 @@ package com.itcase.project.service.impl;
 import com.itcase.project.Dao.CookieMapper;
 import com.itcase.project.Dao.TomCookieMapper;
 import com.itcase.project.enetity.Cookie;
+import com.itcase.project.enetity.Enum.CategoryEnum;
+import com.itcase.project.enetity.Page;
 import com.itcase.project.enetity.TomCookie;
 import com.itcase.project.service.TomCookieService;
 import org.slf4j.Logger;
@@ -71,5 +73,34 @@ public class TomCookieServiceImpl implements TomCookieService {
         }
         return false;
 
+    }
+
+    @Override
+    public Page<List<TomCookie>> selectTomCookie(Integer current, Integer pagesize,String type) {
+        Calendar instance = Calendar.getInstance();
+        instance.setTime(new Date());
+        instance.add(Calendar.DAY_OF_MONTH,1);
+        Date time = instance.getTime();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String tomTime = sdf.format(time);
+        List<TomCookie> tomCookies = tomCookieMapper.selectCookieByTime(tomTime);
+        List<TomCookie> collect = tomCookies;
+        if(CategoryEnum.COOKIE_INFO.getDesc().equals(type)){
+            collect = tomCookies.stream().filter(tomCookie -> type.equals(tomCookie.getcType())).collect(toList());
+        }else if(CategoryEnum.FRUIT_INFO.getDesc().equals(type)){
+            collect = tomCookies.stream().filter(tomCookie -> type.equals(tomCookie.getcType())).collect(toList());
+        }else if(CategoryEnum.TEA_INFO.getDesc().equals(type)){
+            collect = tomCookies.stream().filter(tomCookie -> type.equals(tomCookie.getcType())).collect(toList());
+        }
+        int size = 0;
+        if (!collect.isEmpty()){
+            size = collect.size();
+        }
+        Page<List<TomCookie>> page = new Page<>(pagesize,size,current);
+        Integer start = page.getStart();
+        List<TomCookie> collects = tomCookies.stream().skip(start).limit(pagesize).collect(toList());
+        page.setDate(collects);
+        page.setTomTime(tomTime);
+        return page;
     }
 }

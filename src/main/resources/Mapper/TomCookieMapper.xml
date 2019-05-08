@@ -41,6 +41,9 @@
         </foreach>
 
     </insert>
+    <select id="selectCookieByTime" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select * from work_tomcookie where cookie_creatime = #{time,jdbcType=VARCHAR}
+    </select>
 
 
 </mapper>

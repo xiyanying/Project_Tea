@@ -11,24 +11,56 @@ import java.util.Map;
 
 @Component
 public interface CookieMapper {
-
+    /**
+     * 通过主键查询cookie
+     * @param id 查询条件
+     * @return
+     */
     @Transactional(readOnly = true)
-   public Cookie selectCookieById(@Param(value = "id") Integer id);
+    Cookie selectCookieById(@Param(value = "id") Integer id);
 
+    /**
+     *
+     * @param map 封装的条件
+     * @param type 判断条件
+     * @return Cookie集合
+     */
     @Transactional(readOnly = true)
-   public List<Cookie> selectAllCookies(@Param("map") Map map,@Param("type") String type);
+    List<Cookie> selectAllCookies(@Param("map") Map map,@Param("type") String type);
 
+    /**
+     * 删除操作
+     * @param id 删除条件
+     */
     @Transactional(readOnly = false)
-    public void deleteByPrimaryKey(Integer id);
+     void deleteByPrimaryKey(Integer id);
 
+    /**
+     *  单挑插入
+     * @param cookie 对象
+     */
     @Transactional(readOnly = false)
-    public void insertCookie(Cookie cookie);
+     void insertCookie(Cookie cookie);
 
+    /**
+     * 有条件的更新对象
+     * @param cookie 更新对象
+     */
     @Transactional(readOnly = false)
-    public void updateByPrimaryKeySelective(Cookie cookie);
+     void updateByPrimaryKeySelective(Cookie cookie);
 
+    /**
+     * 记录条数
+     * @param type 判断条件
+     * @return
+     */
     @Transactional(readOnly = false)
-    public Integer getTotal(@Param("type") String type);
+     Integer getTotal(@Param("type") String type);
 
-    public List<Cookie> getBatch(List<Integer> cids);
+    /**
+     *  批量查询cookies
+     * @param cids 对象id集合
+     * @return
+     */
+     List<Cookie> getBatch(List<Integer> cids);
 }
