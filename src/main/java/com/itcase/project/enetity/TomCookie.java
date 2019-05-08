@@ -8,7 +8,17 @@ import java.util.Date;
  */
 public class TomCookie extends Cookie {
 
+    private Integer tomId;
+
     private String createTime;
+
+    public Integer getTomId() {
+        return tomId;
+    }
+
+    public void setTomId(Integer tomId) {
+        this.tomId = tomId;
+    }
 
     public String getCreateTime() {
         return createTime;

@@ -14,6 +14,7 @@ import javax.xml.ws.soap.Addressing;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -42,8 +43,12 @@ public class TomCookieServiceImpl implements TomCookieService {
         List<String> collect = Arrays.stream(split).collect(toList());
         collect.forEach((String a) -> cids.add(Integer.valueOf(a)));
         List<Cookie> batchCookie = cookieMapper.getBatch(cids);
+        Calendar instance = Calendar.getInstance();
+        instance.setTime(new Date());
+        instance.add(Calendar.DAY_OF_MONTH,1);
+        Date time = instance.getTime();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        String date = sdf.format(new Date());
+        String date = sdf.format(time);
         batchCookie.forEach((Cookie c) -> {
             TomCookie tomCookie = new TomCookie();
             tomCookie.setcId(c.getcId());
