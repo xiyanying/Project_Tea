@@ -229,7 +229,7 @@
                         </tr>
                     </c:forEach>
                 </table>
-                <c:if test="${pageCount}!=null">
+                <c:if test="${size!=0}">
                     <div class="page_count_link">
                         <c:forEach items="${pageCount}" var="num">
                             <a href="${pageContext.request.contextPath}/tom/cookie/select?type=${type}&current=${num}">${num}</a>

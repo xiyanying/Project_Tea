@@ -54,6 +54,7 @@ public class TomCookieController {
         modelAndView.addObject("data",listPage.getDate());
         modelAndView.addObject("list",listPage);
         modelAndView.addObject("pageCount",num);
+        modelAndView.addObject("size",num.size());
         modelAndView.addObject("type",type);
         modelAndView.setViewName("/WEB-INF/jsp/tomCookie.jsp");
         return modelAndView;
