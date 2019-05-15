@@ -23,4 +23,6 @@ public interface TomCookieMapper {
      * @return List<TomCookie> 集合
      */
      List<TomCookie> selectCookieByTime(String time);
+
+     void deleteCookieById(Integer id);
 }

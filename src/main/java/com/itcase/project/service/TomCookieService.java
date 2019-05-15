@@ -14,4 +14,6 @@ public interface TomCookieService {
     boolean batchTomCookie(String ids);
 
     Page<List<TomCookie>> selectTomCookie(Integer current, Integer pagesize,String type);
+
+    void deleteCookie(Integer id);
 }

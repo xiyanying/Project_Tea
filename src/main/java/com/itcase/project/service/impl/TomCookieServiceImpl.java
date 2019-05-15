@@ -103,4 +103,10 @@ public class TomCookieServiceImpl implements TomCookieService {
         page.setTomTime(tomTime);
         return page;
     }
+
+    @Override
+    public void deleteCookie(Integer id) {
+        tomCookieMapper.deleteCookieById(id);
+
+    }
 }

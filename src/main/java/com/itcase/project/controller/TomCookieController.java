@@ -3,6 +3,8 @@ package com.itcase.project.controller;
 import com.itcase.project.enetity.Page;
 import com.itcase.project.enetity.TomCookie;
 import com.itcase.project.service.impl.TomCookieServiceImpl;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,23 +15,31 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * @Author zhanglipeng
  * @Date 2019/5/7 22:26
  */
-@RestController
+@Controller
 @RequestMapping("/tom")
 public class TomCookieController {
+
+    private final Logger logger = LoggerFactory.getLogger(TomCookieController.class);
 
     @Autowired
     private TomCookieServiceImpl service;
 
     @RequestMapping(value = "/pitch",method = RequestMethod.GET)
-    public void pitchCookie(String id){
-        System.out.println(id);
+    public String pitchCookie(String id){
+        logger.info("pitchCookie id:{}",id);
+        if(Objects.isNull(id)){
+            return "redirect:/cookie/select";
+        }
+
         boolean b = service.batchTomCookie(id);
-        System.out.println(b);
+        return "redirect:/tom/cookie/select";
+
     }
 
     @RequestMapping(value = "/cookie/select",method = RequestMethod.GET)
@@ -47,5 +57,17 @@ public class TomCookieController {
         modelAndView.addObject("type",type);
         modelAndView.setViewName("/WEB-INF/jsp/tomCookie.jsp");
         return modelAndView;
+    }
+
+    @RequestMapping(value = "delete/cookie",method = RequestMethod.GET)
+    public String deleteTomCookie(Integer id){
+        logger.info("delete operation id:{}",id);
+        if(Objects.isNull(id)){
+            logger.error("id不能为空");
+            throw new RuntimeException("id is null,please check again!");
+        }
+        service.deleteCookie(id);
+        return "redirect:/tom/cookie/select";
+
     }
 }

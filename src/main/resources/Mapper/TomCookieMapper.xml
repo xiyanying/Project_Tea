@@ -18,9 +18,9 @@
 
 
 
-    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from work_tomookie
-    where cookie_id = #{id,jdbcType=BIGINT}
+    <delete id="deleteCookieById" parameterType="java.lang.Integer">
+    delete from work_tomcookie
+    where tom_id = #{id,jdbcType=BIGINT}
   </delete>
 
     <!--

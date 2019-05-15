@@ -225,15 +225,17 @@
                             <td>${tcookie.cImagePath}</td>
                             <td>${tcookie.cType}</td>
                             <td>
-                                <a href="${pageContext.request.contextPath}/info/delete/cookie?id=${tcookie.tomId}">删除</a></td>
+                                <a href="${pageContext.request.contextPath}/tom/delete/cookie?id=${tcookie.tomId}">删除</a></td>
                         </tr>
                     </c:forEach>
                 </table>
-                <div class="page_count_link">
-                    <c:forEach items="${pageCount}" var="num">
-                        <a href="${pageContext.request.contextPath}/tom/cookie/select?type=${type}&current=${num}">${num}</a>
-                    </c:forEach>
-                </div>
+                <c:if test="${pageCount}!=null">
+                    <div class="page_count_link">
+                        <c:forEach items="${pageCount}" var="num">
+                            <a href="${pageContext.request.contextPath}/tom/cookie/select?type=${type}&current=${num}">${num}</a>
+                        </c:forEach>
+                    </div>
+                </c:if>
             </div>
         </li>
     </ul>
