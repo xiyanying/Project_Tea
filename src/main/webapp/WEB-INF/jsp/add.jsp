@@ -212,9 +212,6 @@
                 <div class="add_title">
                     <p><b>糕点信息添加</b></p>
                 </div>
-                <div class="addDiv">
-                    <input type="submit" id="addbtn" value="添加">
-                </div>
                 <form action="${pageContext.request.contextPath}/info/add/cookie" method="post" enctype="multipart/form-data"><br>
                     <div id="addDiv">
                         <table class="addTab">
@@ -253,6 +250,9 @@
                                 </td>
                             </tr>
                         </table>
+                    </div>
+                    <div class="addDiv">
+                        <input type="submit" id="addbtn" value="添加">
                     </div>
                 </form>
             </div>

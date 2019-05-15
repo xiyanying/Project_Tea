@@ -200,9 +200,6 @@
         </li>
         <li>
             <div class="manager_right">
-                <div id="backDiv">
-                    <a href="${pageContext.request.contextPath}/info/getAll/cookie">返回主页面</a>
-                </div>
                 <div class="detail_title">
                     <p><b>糕点详细信息</b></p>
                 </div>
@@ -239,6 +236,9 @@
                             </td>
                         </tr>
                     </table>
+                </div>
+                <div id="backDiv">
+                    <a href="${pageContext.request.contextPath}/info/getAll/cookie">返回主页面</a>
                 </div>
             </div>
         </li>
