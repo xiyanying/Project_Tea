@@ -23,29 +23,11 @@
                 }
             }
             alert(bb)
-
-            $.ajax({
-                url:"http://localhost:8080/xyy/tom/pitch",    //请求的url地址
-                dataType:"json",   //返回格式为json
-                async:true,//请求是否异步，默认为异步，这也是ajax重要特性
-                data:{"id":bb},    //参数值
-                type:"GET",   //请求方式
-                beforeSend:function(){
-                    //请求前的处理
-                },
-                success:function(req){
-                    //请求成功时处理
-                    alert("已添加")
-                },
-                complete:function(){
-                    //请求完成的处理
-                    alert("已添加")
-                },
-                error:function(){
-                    //请求出错处理
-                }
+            $.get('http://localhost:8080/xyy/tom/pitch', {
+                id: bb,
+            }, function(req) {
+                alert("已添加" + req)
             });
-
         }
     </script>
     <style  type="text/css">
@@ -164,12 +146,26 @@
             border-radius: 5px;
             background-color: white;
         }
+        .left_tomorrow{
+            width: 123px;
+            height: 35px;
+            color: rgb(141, 67, 13);
+            font-size: 20px;
+            position: absolute;
+            top: 350px;
+            left: 90px;
+            padding-top: 13px;
+            text-align: center;
+            display: block;
+            border-radius: 5px;
+            background-color: white;
+        }
         .page_cookie{
-            width: 50%;
+            width: 60%;
             height: 50px;
             position: absolute;
             top:450px;
-            left:240px;
+            left:200px;
         }
         .page_all_link{
             width: 80px;
@@ -221,6 +217,23 @@
             background-color: black;
             border-radius: 3px;
         }
+        #tomTea_btn{
+            border-top-style: none;
+            border-right-style: none;
+            border-bottom-style: none;
+            border-left-style: none;
+            width: 80px;
+            height: 36px;
+            margin: 10px;
+            text-align: center;
+            font-size: 18px;
+            color:  rgb(141, 67, 13);
+            background-color: black;
+            border-radius: 3px;
+        }
+        #tomTea_btn:hover {
+            color: burlywood;
+        }
         .all_title{
             width: 30%;
             height: 50px;
@@ -257,8 +270,13 @@
                         </li>
                         <li>
                             <div class="left_add">
-                                <a href=${pageContext.request.contextPath}/info/jump/jsp>
+                                <a href="${pageContext.request.contextPath}/info/jump/jsp">
                                     添加</a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="left_tomorrow">
+                                <a href="${pageContext.request.contextPath}/tom/cookie/select">明日查看</a>
                             </div>
                         </li>
                     </ul>
@@ -324,8 +342,8 @@
                             </div>
                         </li>
                         <li>
-                            <div class="page_tea_link">
-                               <input type="button" onclick="aa()" value="提交选中"/>
+                            <div>
+                               <input type="button" onclick="aa()" id="tomTea_btn" value="提交选中"/>
                             </div>
                         </li>
                     </ul>

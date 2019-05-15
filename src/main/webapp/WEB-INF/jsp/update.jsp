@@ -117,6 +117,20 @@
             border-radius: 5px;
             background-color: white;
         }
+        .left_tomorrow{
+            width: 123px;
+            height: 35px;
+            color: rgb(141, 67, 13);
+            font-size: 20px;
+            position: absolute;
+            top: 350px;
+            left: 90px;
+            padding-top: 13px;
+            text-align: center;
+            display: block;
+            border-radius: 5px;
+            background-color: white;
+        }
         .update_title{
             width: 30%;
             height: 50px;
@@ -128,7 +142,7 @@
             top:20px;
             left: 20%;
         }
-        #updateDiv{
+        #updateDiv {
             height: 440px;
             width: 45%;
             background-image: url(/static/img/bg.jpg);
@@ -136,16 +150,6 @@
             top: 10%;
             left: 15%;
             border: 2px solid papayawhip;
-        }
-        #backDiv{
-            display: inline-block;
-            width: 90px;
-            background-color: black;
-            position: absolute;
-            top:430px;
-            left:35%;
-            padding: 10px 5px;
-            border-radius:5px;
         }
         .textTd input ,.textTd select {
             width: 270px;
@@ -194,6 +198,11 @@
                         <li>
                             <div class="left_add">
                                 <a href=${pageContext.request.contextPath}/info/jump/jsp>添加</a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="left_tomorrow">
+                                <a href="${pageContext.request.contextPath}/tom/cookie/select">明日查看</a>
                             </div>
                         </li>
                     </ul>

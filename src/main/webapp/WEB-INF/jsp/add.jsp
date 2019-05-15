@@ -145,6 +145,20 @@
             border-radius: 5px;
             background-color: white;
         }
+        .left_tomorrow{
+            width: 123px;
+            height: 35px;
+            color: rgb(141, 67, 13);
+            font-size: 20px;
+            position: absolute;
+            top: 350px;
+            left: 90px;
+            padding-top: 13px;
+            text-align: center;
+            display: block;
+            border-radius: 5px;
+            background-color: white;
+        }
         .add_title{
             width: 30%;
             height: 50px;
@@ -182,6 +196,11 @@
                         <li>
                             <div class="left_add">
                                 <a href="${pageContext.request.contextPath}/info/jump/jsp">添加</a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="left_tomorrow">
+                                <a href="${pageContext.request.contextPath}/tom/cookie/select">明日查看</a>
                             </div>
                         </li>
                     </ul>
