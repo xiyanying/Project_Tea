@@ -6,6 +6,7 @@
     <typeAliases>
         <typeAlias type="com.itcase.project.enetity.Cookie" alias="cookie"/>
         <typeAlias type="com.itcase.project.enetity.TomCookie" alias="tomCookie"/>
+        <typeAlias type="com.itcase.project.enetity.Advise" alias="advise"/>
     </typeAliases>
     <!--
     <typeAliases>
