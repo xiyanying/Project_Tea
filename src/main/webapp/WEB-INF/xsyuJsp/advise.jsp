@@ -94,7 +94,7 @@
         }
         .mid_left{
             width:240px;
-            height: 873px;
+            height: 865px;
             position: absolute;
             left: 10%;
             top: 25%;
@@ -104,7 +104,7 @@
         }
         #mid_right{
             width:800px;
-            height: 873px;
+            height: 865px;
             position: absolute;
             left: 27.9%;
             top: 25%;
@@ -183,7 +183,7 @@
                 <td><a href="${pageContext.request.contextPath}/export/common/teaKinds" class="text">茶歇品类</a></td>
                 <td><a href="${pageContext.request.contextPath}/export/common/teaStory" class="text">茶歇故事</a></td>
                 <td><a href="${pageContext.request.contextPath}/export/common/tomorrowTea" class="text">明日茶点</a></td>
-                <td><a href="#" class="text" style="color: red">帮助中心</a></td>
+                <td><a href="#" class="text" style="color: brown">帮助中心</a></td>
             </tr>
         </table>
     </div>
@@ -194,7 +194,7 @@
             <p><b><a href="${pageContext.request.contextPath}/export/common/help">帮助中心</a> </b></p>
         </div>
         <div class="mid_left_help_advise">
-            <p><b><a href="#">意见反馈</a></b></p>
+            <p><b><a href="#"  style="color: brown">意见反馈</a></b></p>
         </div>
     </div>
     <div id="mid_right">

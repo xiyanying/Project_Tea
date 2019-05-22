@@ -83,8 +83,8 @@
         }
 
         #mid_right{
-            width:800px;
-            height: 773px;
+            width:900px;
+            height: 664px;
             position: absolute;
             left: 15%;
             top: 25%;
@@ -103,6 +103,18 @@
             padding-left: 30px;
             padding-right: 30px;
             padding-top: 50px;
+        }
+        .cookie_display{
+            width: 90%;
+            height: 180px;
+            border: 1px solid silver;
+            text-align: center;
+            font-size: 18px;
+            position:relative;
+            margin-left: 50px;
+            margin-top: 40px;
+            border-radius: 5px;
+            float: left;
         }
     </style>
 </head>
@@ -124,7 +136,7 @@
                 <td><a href="../../main.jsp" class="text">首页</a></td>
                 <td><a href="${pageContext.request.contextPath}/export/common/teaKinds" class="text">茶歇品类</a></td>
                 <td><a href="${pageContext.request.contextPath}/export/common/teaStory" class="text">茶歇故事</a></td>
-                <td><a href="${pageContext.request.contextPath}/export/common/tomorrowTea" style="color: red" class="text">明日茶点</a></td>
+                <td><a href="${pageContext.request.contextPath}/export/common/tomorrowTea" style="color: brown" class="text">明日茶点</a></td>
                 <td><a href="${pageContext.request.contextPath}/export/common/help" class="text">帮助中心</a></td>
             </tr>
         </table>
@@ -143,17 +155,18 @@
 
         <%--</c:forEach>--%>
 
-        <div class="fruit2">
-            <a href="#">
-                <img src="${pageContext.request.contextPath}/static/img/fruit1.png"/>
-            </a>
-            <p>梨子</p>
-        </div>
-        <div class="fruit1">
-            <a href="#">
-                <img src="${pageContext.request.contextPath}/static/img/fruit1.png"/>
-            </a>
-            <p>香蕉</p>
+        <div class="cookie_display">
+            <div class="cookie_img">
+                <img src="${pageContext.request.contextPath}/static/img/cookie2.jpg" alt="" style="width:200px; height:180px;float: left;">
+            </div>
+            <div class="cookie_text">
+                <p>
+                    阔爱小蛋糕
+                </p>
+                <p>
+                    营养价值极高，色香味俱全！
+                </p>
+            </div>
         </div>
 
     </div>

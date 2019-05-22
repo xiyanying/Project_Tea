@@ -82,12 +82,12 @@
 
         .mid_bg{
             width: 100%;
-            height: 700px;
+            height: 950px;
             background-image: url("${pageContext.request.contextPath}/static/img/bg.jpg");
         }
         .mid_left{
             width:240px;
-            height: 673px;
+            height: 914px;
             position: absolute;
             left: 10%;
             top: 25%;
@@ -97,7 +97,7 @@
         }
         #mid_right{
             width:800px;
-            height: 673px;
+            height: 914px;
             position: absolute;
             left: 27.9%;
             top: 25%;
@@ -120,6 +120,18 @@
             background-color: darkgray;
             text-align: center;
         }
+        .cookie_display{
+            width: 200px;
+            height: auto;
+            border: 4px solid silver;
+            text-align: center;
+            font-size: 18px;
+            position:relative;
+            margin-left: 50px;
+            margin-top: 40px;
+            border-radius: 5px;
+            float: left;
+        }
     </style>
 </head>
 <body>
@@ -138,7 +150,7 @@
         <table class="title_tab">
             <tr>
                 <td><a href="../../main.jsp" class="text">首页</a></td>
-                <td><a href="${pageContext.request.contextPath}/export/common/teaKinds" style="color: red" class="text">茶歇品类</a></td>
+                <td><a href="${pageContext.request.contextPath}/export/common/teaKinds" style="color: brown" class="text">茶歇品类</a></td>
                 <td><a href="${pageContext.request.contextPath}/export/common/teaStory" class="text">茶歇故事</a></td>
                 <td><a href="${pageContext.request.contextPath}/export/common/tomorrowTea" class="text">明日茶点</a></td>
                 <td><a href="${pageContext.request.contextPath}/export/common/help" class="text">帮助中心</a></td>
@@ -159,7 +171,78 @@
         </div>
     </div>
     <div id="mid_right">
-
+        <div class="cookie_display">
+            <div class="cookie_img">
+                <img src="${pageContext.request.contextPath}/static/img/cookie2.jpg" alt="" style="width:200px; height:170px;">
+                <p>
+                    阔爱小蛋糕
+                </p>
+            </div>
+        </div>
+        <div class="cookie_display">
+            <div class="cookie_img">
+                <img src="${pageContext.request.contextPath}/static/img/cookie2.jpg" alt="" style="width:200px; height:170px;">
+                <p>
+                    阔爱小蛋糕
+                </p>
+            </div>
+        </div>
+        <div class="cookie_display">
+            <div class="cookie_img">
+                <img src="${pageContext.request.contextPath}/static/img/cookie2.jpg" alt="" style="width:200px; height:170px;">
+                <p>
+                    阔爱小蛋糕
+                </p>
+            </div>
+        </div>
+        <div class="cookie_display">
+            <div class="cookie_img">
+                <img src="${pageContext.request.contextPath}/static/img/cookie2.jpg" alt="" style="width:200px; height:170px;">
+                <p>
+                    阔爱小蛋糕
+                </p>
+            </div>
+        </div>
+        <div class="cookie_display">
+            <div class="cookie_img">
+                <img src="${pageContext.request.contextPath}/static/img/cookie2.jpg" alt="" style="width:200px; height:170px;">
+                <p>
+                    阔爱小蛋糕
+                </p>
+            </div>
+        </div>
+        <div class="cookie_display">
+            <div class="cookie_img">
+                <img src="${pageContext.request.contextPath}/static/img/cookie2.jpg" alt="" style="width:200px; height:170px;">
+                <p>
+                    阔爱小蛋糕
+                </p>
+            </div>
+        </div>
+        <div class="cookie_display">
+            <div class="cookie_img">
+                <img src="${pageContext.request.contextPath}/static/img/cookie2.jpg" alt="" style="width:200px; height:170px;">
+                <p>
+                    阔爱小蛋糕
+                </p>
+            </div>
+        </div>
+        <div class="cookie_display">
+            <div class="cookie_img">
+                <img src="${pageContext.request.contextPath}/static/img/cookie2.jpg" alt="" style="width:200px; height:170px;">
+                <p>
+                    阔爱小蛋糕
+                </p>
+            </div>
+        </div>
+        <div class="cookie_display">
+            <div class="cookie_img">
+                <img src="${pageContext.request.contextPath}/static/img/cookie2.jpg" alt="" style="width:200px; height:170px;">
+                <p>
+                    阔爱小蛋糕
+                </p>
+            </div>
+        </div>
     </div>
 </div>
 <div class="bottom">
