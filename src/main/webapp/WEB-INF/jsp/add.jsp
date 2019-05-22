@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: xyy
@@ -99,7 +100,7 @@
             border-radius: 5px;
         }
         .top_title{
-            width: 200px;
+            width: 350px;
             height: 40px;
             text-align: center;
             font-size: 22px;
@@ -175,7 +176,7 @@
 <body>
 <div class="manager_main_top">
     <div class="top_title">
-        茶歇后台管理
+        西安石油大学茶歇后台管理
     </div>
     <div class="top_welcome">
         ${userName},欢迎您！
@@ -214,17 +215,22 @@
                 </div>
                 <form action="${pageContext.request.contextPath}/info/add/cookie" method="post" enctype="multipart/form-data"><br>
                     <div id="addDiv">
+                        <c:if test="${errors!=null && errors.size()>0}">
+                            <c:forEach items="${errors}" var="error">
+                                <p><font color="red">${error}</font></p>
+                            </c:forEach>
+                        </c:if>
                         <table class="addTab">
                             <tr>
                                 <td>糕点名称:</td>
                                 <td class="textTd">
-                                    <input name="cName"/>
+                                    <input name="cName" placeholder="名称尽量简洁"/>
                                 </td>
                             </tr>
                             <tr>
                                 <td>糕点介绍:</td>
                                 <td class="textTd">
-                                    <input type="text" name="cIntroduce"/>
+                                    <input type="text" name="cIntroduce" placeholder="字数不要超过500字"/>
                                 </td>
                             </tr>
                             <tr>
@@ -246,7 +252,7 @@
                             <tr>
                                 <td>其他:</td>
                                 <td class="textTd">
-                                    <input name="cOther">
+                                    <input name="cOther" placeholder="补充内容添加">
                                 </td>
                             </tr>
                         </table>

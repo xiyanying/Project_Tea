@@ -11,6 +11,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -28,9 +31,20 @@ public class InfoController {
     private Logger logger = LoggerFactory.getLogger(InfoController.class);
 
     @RequestMapping(value = "/add/cookie",method = RequestMethod.POST)
-    public String addCookie(CookieVo cookie) throws Exception{
+    public String addCookie(@Validated CookieVo cookie, BindingResult bindingResult,Model model) throws Exception{
+        //System.out.println(cookie.toString());
+        List<String> message = new ArrayList<>();
         logger.info("add cookie content:{}",cookie.toString());
-        String localpath = "D:\\File\\";
+        // 数据校验
+        if(bindingResult.hasErrors()){
+            for (FieldError fieldError : bindingResult.getFieldErrors()){
+                message.add(fieldError.getDefaultMessage());
+            }
+            model.addAttribute("errors",message);
+            return "/WEB-INF/jsp/add.jsp";
+
+        }
+        String localpath = "D:\\java\\Project_Tea\\src\\main\\webapp\\static\\img\\";
         String fileName = null;
         if(!cookie.getUpload().isEmpty()){
             String contentType = cookie.getUpload().getContentType();
@@ -40,7 +54,7 @@ public class InfoController {
             fileName = cookie.getUpload().getOriginalFilename();
             cookie.getUpload().transferTo(new File(localpath+fileName));
         }
-        String imgPath = localpath + fileName;
+        String imgPath = "static\\img\\" + fileName;
         cookie.setcImagePath(imgPath);
         infoService.addCookieService(cookie);
         return "redirect:/info/getAll/cookie";

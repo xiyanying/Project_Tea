@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itcase.project.Dao.AdviseMapper">
+    <resultMap id="BaseResultMap" type="advise">
+        <id column="advise_id" jdbcType="BIGINT" property="aId" />
+        <result column="advise_title" jdbcType="VARCHAR" property="title" />
+        <result column="advise_content" jdbcType="VARCHAR" property="content" />
+        <result column="advise_phoneNum" jdbcType="VARCHAR" property="phoneNum" />
+        <result column="advise_emailAddress" jdbcType="VARCHAR" property="emailAddress" />
+    </resultMap>
+    <sql id="Base_Column_List">
+      advise_id, advise_title, advise_content, advise_phoneNum, advise_emailAddress
+    </sql>
+    <select id="selectCookieById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from advise
+        where advise_id = #{id,jdbcType=BIGINT}
+    </select>
+
+    <select id="selectAllAdvise" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from advise limit ${map.start} , ${map.end}
+
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from advise
+    where cookie_id = #{id,jdbcType=BIGINT}
+  </delete>
+
+    <!--
+    <insert id="insertCookie" parameterType="com.vipkid.lp.student.provider.entity.Cookie">
+    insert into COOKIE_INFO (cookie_id, cookie_name, cookie_introduce,
+      cookie_img_path, cookie_other
+      )
+    values (#{cId,jdbcType=BIGINT}, #{cName,jdbcType=VARCHAR}, #{cIntroduce,jdbcType=VARCHAR},
+      #{cImagePath,jdbcType=VARCHAR}, #{cOther,jdbcType=VARCHAR}
+      )
+  </insert>
+  -->
+
+    <insert id="insertAdivise" parameterType="advise" useGeneratedKeys="true" keyColumn="advise_id" >
+        insert into advise
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="aId != null">
+                advise_id,
+            </if>
+            <if test="title != null">
+                advise_title,
+            </if>
+            <if test="content != null">
+                advise_content,
+            </if>
+            <if test="phoneNum != null">
+                advise_phoneNum,
+            </if>
+            <if test="emailAddress != null">
+                advise_emailAddress,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="aId != null">
+                #{aId,jdbcType=VARCHAR},
+            </if>
+            <if test="title != null">
+                #{title,jdbcType=VARCHAR},
+            </if>
+            <if test="content != null">
+                #{content,jdbcType=VARCHAR},
+            </if>
+            <if test="phoneNum != null">
+                #{phoneNum,jdbcType=VARCHAR},
+            </if>
+            <if test="emailAddress != null">
+                #{emailAddress,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <select id="getTotal" parameterType="java.lang.String" resultType="java.lang.Integer">
+        select count(*) from advise
+    </select>
+
+</mapper>

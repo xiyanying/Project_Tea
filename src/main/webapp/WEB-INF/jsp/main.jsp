@@ -100,7 +100,7 @@
             border-radius: 5px;
         }
         .top_title{
-            width: 200px;
+            width: 350px;
             height: 40px;
             text-align: center;
             font-size: 22px;
@@ -250,7 +250,7 @@
 <body>
 <div class="manager_main_top">
     <div class="top_title">
-        茶歇后台管理
+        西安石油大学茶歇后台管理
     </div>
     <div class="top_welcome">
         ${userName},欢迎您！

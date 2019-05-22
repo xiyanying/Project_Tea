@@ -18,7 +18,7 @@
         #wrap {
             height: 455px;
             width: 100%;
-            background-image: url(static/img/bg.jpg);
+            background-image: url("${pageContext.request.contextPath}/static/img/bg.jpg");
             opacity: 0.6;
         }
         #head {
@@ -128,7 +128,7 @@
             height: 24px;
             margin-left: 22px;
             vertical-align: middle;
-            background-image: url(static/img/3.jpg);
+            background-image: url("${pageContext.request.contextPath}/static/img/3.jpg");
             background-repeat: no-repeat;
             vertical-align: middle;
             margin-right: 5px;
@@ -166,17 +166,17 @@
         </div>
         <!-- 输入框 -->
         <div class="lgD">
-            <img src="static/img/5.png" width="20" height="20" alt=""/>
+            <img src="${pageContext.request.contextPath}/static/img/5.png" width="20" height="20" alt=""/>
             <input type="text"
                    placeholder="输入用户名" name="userName" />
         </div>
         <div class="lgD">
-            <img src="static/img/5.png" width="20" height="20" alt=""/>
+            <img src="${pageContext.request.contextPath}/static/img/5.png" width="20" height="20" alt=""/>
             <input type="password"
                    placeholder="输入用户密码" name="passWord" />
         </div>
         <div class="logC">
-            <a href="info/getAll/cookie" target="_self"><button>登 录</button></a>
+            <a href="${pageContext.request.contextPath}/info/getAll/cookie" target="_self"><button>登 录</button></a>
         </div>
     </div>
 </div>

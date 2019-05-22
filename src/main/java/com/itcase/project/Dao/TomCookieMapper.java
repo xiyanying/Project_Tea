@@ -1,6 +1,7 @@
 package com.itcase.project.Dao;
 
 import com.itcase.project.enetity.TomCookie;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -25,4 +26,6 @@ public interface TomCookieMapper {
      List<TomCookie> selectCookieByTime(String time);
 
      void deleteCookieById(Integer id);
+
+     List<TomCookie> getByCondition(@Param("end") Integer end, @Param("time") String dateTime);
 }

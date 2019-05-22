@@ -23,6 +23,10 @@
     where tom_id = #{id,jdbcType=BIGINT}
   </delete>
 
+    <select id="getByCondition" resultMap="BaseResultMap" >
+        select * from work_tomcookie where cookie_creatime = #{time,jdbcType=VARCHAR} limit 0,#{end,jdbcType=BIGINT}
+    </select>
+
     <!--
     <insert id="insertCookie" parameterType="com.vipkid.lp.student.provider.entity.Cookie">
     insert into COOKIE_INFO (cookie_id, cookie_name, cookie_introduce,

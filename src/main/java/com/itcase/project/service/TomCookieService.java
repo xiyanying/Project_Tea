@@ -16,4 +16,6 @@ public interface TomCookieService {
     Page<List<TomCookie>> selectTomCookie(Integer current, Integer pagesize,String type);
 
     void deleteCookie(Integer id);
+
+    List<TomCookie> dayCookie(String dayTime);
 }

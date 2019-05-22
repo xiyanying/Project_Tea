@@ -109,4 +109,10 @@ public class TomCookieServiceImpl implements TomCookieService {
         tomCookieMapper.deleteCookieById(id);
 
     }
+
+    @Override
+    public List<TomCookie> dayCookie(String dayTime) {
+        List<TomCookie> tomCookies = tomCookieMapper.selectCookieByTime(dayTime);
+        return tomCookies;
+    }
 }

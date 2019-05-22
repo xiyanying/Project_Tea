@@ -4,14 +4,19 @@ import com.itcase.project.enetity.Enum.CategoryEnum;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotBlank;
 
 @Setter
 @Getter
 @ToString
 public class Cookie {
     private Integer cId;
+    @NotBlank(message = "糕点名称不能为空")
     private String cName;
+    @Length(max = 500,message = "意见内容不能超过500字。。。")
     private String cIntroduce;
+   // @NotBlank(message = "图片路径不能为空")
     private String cImagePath;
     private String cOther;
     private String cType;
