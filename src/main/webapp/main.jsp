@@ -91,7 +91,7 @@
 
         .mid_bg{
             width: 100%;
-            height: 630px;
+            height: 1330px;
             background-image: url("${pageContext.request.contextPath}/static/img/bg2.jpg");
             background-repeat: no-repeat;
             background-size: cover;
@@ -102,16 +102,18 @@
             height: 350px;
             position: absolute;
             left: 22%;
-            top: 38%;
+            top: 42%;
             opacity: 1;
         }
         .mid_bottom{
-            width:56%;
-            height: 100px;
+            width:70%;
+            height: 840px;
             position: absolute;
             left: 22%;
             top: 100%;
             background-color: white;
+            opacity: 0.7;
+            margin-top: 50px;
         }
         #img{
             width: 100%;
@@ -139,6 +141,24 @@
         }
         .point ul li img{width:20px;height:20px;}
         .point ul li img:hover{cursor:pointer;}
+        .mid_left_cookieStory, .mid_left_cookieStory::after,.mid_left_cookieStory::before{
+            width: 56%;
+            height: 60px;
+            padding-top: 20px;
+            margin-left: 22%;
+            text-align: center;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-size: 24px;
+        }
+        .mid_left_cookieStory:hover{
+            text-align: center;
+        }
+        p{
+            padding-left: 25px;
+            padding-right: 15px;
+            padding-top: 10px;
+            font-size: 18px;
+        }
     </style>
 
     <script type="text/javascript">
@@ -249,6 +269,9 @@
     </div>
 </div>
 <div class="mid_bg" id="mid_bg">
+    <div class="mid_left_cookieStory">
+        <p><b><a href="#mid_right">关于蛋糕，您还有什么不知道的呢？</b></p>
+    </div>
     <div class="mid_top">
         <a href="#"><img alt="potho" src="${pageContext.request.contextPath}/static/img/cookie1.jpg" id="img"/></a>
         <div class="point" style="display:block;">
@@ -273,8 +296,41 @@
         </div>
     </div>
     <div class="mid_bottom">
+        <p style="font-size:22px;"><b>一些你有所不知的小故事~</b></p>
         <p>
-            首页介绍:该页主要动态展示推荐度较高的产品
+            <img src="${pageContext.request.contextPath}/static/img/mainCookie1.jpg" alt="" style="width:200px; height:auto; float:right; padding-left: 10px; padding-right: 20px;">
+            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            据史料记载，奠定现代烘焙食品工业的先驱者是古代埃及人。埃及人最早发现并采用了发酵的方法来制作烘焙食品
+            －面包的，当时古埃及人已知道用谷物制备各种食品，例如将捣碎的小麦粉掺水和马铃薯及盐拌在一起调制成面团，
+            然后放在土窑内烘烤，很可能当时有一些面团剩余下来，自然地利用了空气中的野生酵母，产生了发酵，当人们用
+            这些剩余的发酵面团制作食品时，惊奇地发现，得到了松软而有弹性的面包。最初埃及人所使用的烤炉是一种用泥
+            土筑成圆形烤炉，它上部开口，使空气保持流通，底部生火，待炉内温度达到相当高时，将火熄灭，拨出炉灰，将
+            调好的面团放入炉底，利用炉内余热烤熟。用这种炉烤出的面包风味纯正，香气浓郁，很受消费者欢迎，而这种工
+            艺也还一直流传至今。
+        </p>
+        <p>
+            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            烘焙食品后来传到了希腊。希腊人将烤炉改为圆拱式，上部的空气孔筑得更小而内部容积则增大，使炉内保温性更
+            好。希腊人不仅改进了烤炉，而且在制作技术方面也作了很大的改进，他们在制品中加入了牛奶、奶油、奶酪和蜂
+            蜜，大大改善了制品的品质和风味。后来，技术又传到了罗马，罗马人又将烤炉筑的更大，而且在烤面包时不需再
+            将炉火扑灭，此种烤炉燃烧的部分在中间，而火的四周筑有隔热层，面包在进炉前需要用木板伸入炉内，将其直接
+            放在隔层上烘烤，待烤熟后再用木版取出，用这种工艺烤出的面包口味更香，而且炉内容积大了，面包烤的数量也
+            增多。
+        </p>
+        <p>
+            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            烘焙食品是人们生活所必需的，它具有较高的营养价值，应时适口，无论是面包还是蛋糕在品种上都是丰富多彩，
+            不断推陈出新。除传统的普通烘焙食品外，近些年又出现了强化营养，注重保健功能的烘焙制品。例如：荞麦保
+            健蛋糕、螺旋藻面包、高纤维面包、全麦面包、钙质面包、全营养面包等，既可以在饭前或饭后作为茶点品味，
+            又能作为主食吃饱，满足多种消费者的不同需要。
+        </p>
+        <p>
+            <img src="${pageContext.request.contextPath}/static/img/mainCookie2.jpg" alt="" style="width:200px; height:auto; float:right; padding-left: 10px; padding-right: 20px;">
+            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            十九世纪初，烘焙技术传到了中国。最初制品品种简单，产量低，生产周期长。改革开放前，中国面包的生产都
+            还很不普及，只集中在大中城市生产，农村、乡镇几乎没有烘焙制品的生产，制作工艺和生产设备 也比较简单、
+            落后，制品品种花色较少，质量也不稳定。改革开放后，中国烘焙行业发生了突飞猛进的变化，现已普及城乡各
+            地，制品的品种繁多，花色各异，产品质量不断提高，生产设备日益更新，新的原材料也层出不穷。
         </p>
     </div>
 </div>
