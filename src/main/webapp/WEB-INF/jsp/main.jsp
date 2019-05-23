@@ -245,6 +245,20 @@
             top:20px;
             left: 30%;
         }
+        .left_add{
+            width: 123px;
+            height: 35px;
+            color: rgb(141, 67, 13);
+            font-size: 20px;
+            position: absolute;
+            top: 450px;
+            left: 90px;
+            padding-top: 13px;
+            text-align: center;
+            display: block;
+            border-radius: 5px;
+            background-color: white;
+        }
     </style>
 </head>
 <body>
@@ -276,6 +290,11 @@
                         <li>
                             <div class="left_advise">
                                 <a href="#">意见反馈</a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="left_add">
+                                <a href="${pageContext.request.contextPath}/info/jump/jsp">添加</a>
                             </div>
                         </li>
                     </ul>
