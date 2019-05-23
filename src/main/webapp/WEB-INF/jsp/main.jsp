@@ -132,7 +132,7 @@
             border-radius: 5px;
             background-color: white;
         }
-        .left_add{
+        .left_tomorrow{
             width: 123px;
             height: 35px;
             color: rgb(141, 67, 13);
@@ -146,7 +146,7 @@
             border-radius: 5px;
             background-color: white;
         }
-        .left_tomorrow{
+        .left_advise{
             width: 123px;
             height: 35px;
             color: rgb(141, 67, 13);
@@ -269,14 +269,13 @@
                             </div>
                         </li>
                         <li>
-                            <div class="left_add">
-                                <a href="${pageContext.request.contextPath}/info/jump/jsp">
-                                    添加</a>
+                            <div class="left_tomorrow">
+                                <a href="${pageContext.request.contextPath}/tom/cookie/select">明日查看</a>
                             </div>
                         </li>
                         <li>
-                            <div class="left_tomorrow">
-                                <a href="${pageContext.request.contextPath}/tom/cookie/select">明日查看</a>
+                            <div class="left_advise">
+                                <a href="#">意见反馈</a>
                             </div>
                         </li>
                     </ul>
@@ -308,7 +307,12 @@
                             <td>${tcookie.cImagePath}</td>
                             <td>${tcookie.cOther}</td>
                             <td>${tcookie.cType}</td>
-                            <td><a href="${pageContext.request.contextPath}/info/get/cookie?id=${tcookie.cId}">查看</a> <a href="${pageContext.request.contextPath}/info/get/update?id=${tcookie.cId}">修改</a> <a href="${pageContext.request.contextPath}/info/delete/cookie?id=${tcookie.cId}">删除</a></td>
+                            <td>
+                                <a href="${pageContext.request.contextPath}/info/jump/jsp">添加</a>
+                                <a href="${pageContext.request.contextPath}/info/get/cookie?id=${tcookie.cId}">查看</a>
+                                <a href="${pageContext.request.contextPath}/info/get/update?id=${tcookie.cId}">修改</a>
+                                <a href="${pageContext.request.contextPath}/info/delete/cookie?id=${tcookie.cId}">删除</a>
+                            </td>
                         </tr>
                     </c:forEach>
                 </table>

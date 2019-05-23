@@ -1,15 +1,14 @@
 <%--
   Created by IntelliJ IDEA.
-  User: zhanglipeng
-  Date: 2019/5/8
-  Time: 14:13
+  User: xyy
+  Date: 2019/5/23
+  Time: 14:44
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>明日查看</title>
+    <title>意见反馈后台显示页面</title>
     <style  type="text/css">
         *{
             margin: 0px;
@@ -112,20 +111,6 @@
             border-radius: 5px;
             background-color: white;
         }
-        .left_advise{
-            width: 123px;
-            height: 35px;
-            color: rgb(141, 67, 13);
-            font-size: 20px;
-            position: absolute;
-            top: 350px;
-            left: 90px;
-            padding-top: 13px;
-            text-align: center;
-            display: block;
-            border-radius: 5px;
-            background-color: white;
-        }
         .left_tomorrow {
             width: 123px;
             height: 35px;
@@ -140,7 +125,20 @@
             border-radius: 5px;
             background-color: white;
         }
-
+        .left_advise {
+            width: 123px;
+            height: 35px;
+            color: rgb(141, 67, 13);
+            font-size: 20px;
+            position: absolute;
+            top: 350px;
+            left: 90px;
+            padding-top: 13px;
+            text-align: center;
+            display: block;
+            border-radius: 5px;
+            background-color: white;
+        }
         .page_count_link{
             width: 80px;
             height: 35px;
@@ -206,36 +204,32 @@
         <li>
             <div class="manager_right">
                 <div class="all_title">
-                    <p><b>明日糕点显示     (时间：${list.tomTime})</b></p>
+                    <p><b>意见反馈显示 </b></p>
                 </div>
                 <table class="tab">
                     <tr class="head">
-                        <td>复选框</td>
                         <td>序号</td>
                         <td>名称</td>
                         <td>图片路径</td>
                         <td>类型</td>
                         <td>操作</td>
                     </tr>
-                    <c:forEach items="${data}" var="tcookie" varStatus="status">
-                        <tr>
-                            <td><input type="checkbox" name="ids" value="${tcookie.cId}" /></td>
-                            <td>${status.count}</td>
-                            <td>${tcookie.cName}</td>
-                            <td>${tcookie.cImagePath}</td>
-                            <td>${tcookie.cType}</td>
-                            <td>
-                                <a href="${pageContext.request.contextPath}/tom/delete/cookie?id=${tcookie.tomId}">删除</a></td>
-                        </tr>
-                    </c:forEach>
+                    <tr>
+                        <td>${status.count}</td>
+                        <td>${tcookie.cName}</td>
+                        <td>${tcookie.cImagePath}</td>
+                        <td>${tcookie.cType}</td>
+                        <td>
+                            <a href="${pageContext.request.contextPath}/tom/delete/cookie?id=${tcookie.tomId}">删除</a></td>
+                    </tr>
                 </table>
-                <c:if test="${size!=0}">
+                <!-- <c:if test="${size!=0}">
                     <div class="page_count_link">
                         <c:forEach items="${pageCount}" var="num">
                             <a href="${pageContext.request.contextPath}/tom/cookie/select?type=${type}&current=${num}">${num}</a>
                         </c:forEach>
                     </div>
-                </c:if>
+                </c:if> -->
             </div>
         </li>
     </ul>
