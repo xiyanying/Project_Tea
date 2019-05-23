@@ -164,10 +164,10 @@
             <p></p><b><a href="#">水果类</a> </b></p>
         </div>
         <div class="mid_left_fruit">
-            <p><b><a href="#">茶点类</a></b></p>
+            <p><b><a href="#" style="color: brown">茶点类</a></b></p>
         </div>
         <div class="mid_left_fruit">
-            <p><b><a href="#" style="color: brown">糕点类</a></b></p>
+            <p><b><a href="#">糕点类</a></b></p>
         </div>
     </div>
     <div id="mid_right">
