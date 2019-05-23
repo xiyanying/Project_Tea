@@ -82,7 +82,7 @@
         }
         a{
             display: block;
-            color: black;
+            color: white;
             text-decoration: none;
         }
         a:hover,a:active{
@@ -109,7 +109,7 @@
             width:70%;
             height: 840px;
             position: absolute;
-            left: 22%;
+            left: 15%;
             top: 100%;
             background-color: white;
             opacity: 0.7;
@@ -148,7 +148,7 @@
             margin-left: 22%;
             text-align: center;
             font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-            font-size: 24px;
+            font-size: 26px;
         }
         .mid_left_cookieStory:hover{
             text-align: center;
@@ -270,10 +270,10 @@
 </div>
 <div class="mid_bg" id="mid_bg">
     <div class="mid_left_cookieStory">
-        <p><b><a href="#mid_right">关于蛋糕，您还有什么不知道的呢？</b></p>
+        <p><b><a href="#mid_right">关于蛋糕，您还有什么不知道的呢？</a></b></p>
     </div>
     <div class="mid_top">
-        <a href="#"><img alt="potho" src="${pageContext.request.contextPath}/static/img/cookie1.jpg" id="img"/></a>
+        <a href="#"><img alt="potho" src="${pageContext.request.contextPath}/static/img/quanmaiqiepian.jpg" id="img"/></a>
         <div class="point" style="display:block;">
             <ul>
                 <!-- ul、li实现“小圆点” -->

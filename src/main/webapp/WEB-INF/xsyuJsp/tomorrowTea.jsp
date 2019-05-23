@@ -78,31 +78,18 @@
 
         .mid_bg{
             width: 100%;
-            height: 700px;
+            height: 850px;
             background-image: url("${pageContext.request.contextPath}/static/img/bg.jpg");
         }
 
         #mid_right{
             width:900px;
-            height: 664px;
+            height: 814px;
             position: absolute;
             left: 15%;
             top: 25%;
             background-color: white;
-            opacity: 0.9;
-        }
-        .fruit1{
-            float: left;
-            text-align: center;
-            padding-left: 30px;
-            padding-right: 30px;
-        }
-        .fruit2{
-            float: left;
-            text-align: center;
-            padding-left: 30px;
-            padding-right: 30px;
-            padding-top: 50px;
+            opacity: 0.8;
         }
         .cookie_display{
             width: 90%;
@@ -112,7 +99,7 @@
             font-size: 18px;
             position:relative;
             margin-left: 50px;
-            margin-top: 40px;
+            margin-top: 30px;
             border-radius: 5px;
             float: left;
         }
@@ -154,7 +141,33 @@
             <%--</div>--%>
 
         <%--</c:forEach>--%>
-
+        <p style="font-size: 24px;margin-left: 50px;margin-top: 30px; font-family: 'Times New Roman', Times, serif;"><b>明日展示</b></p>
+        <div class="cookie_display">
+            <div class="cookie_img">
+                <img src="${pageContext.request.contextPath}/static/img/cookie2.jpg" alt="" style="width:200px; height:180px;float: left;">
+            </div>
+            <div class="cookie_text">
+                <p>
+                    阔爱小蛋糕
+                </p>
+                <p>
+                    营养价值极高，色香味俱全！
+                </p>
+            </div>
+        </div>
+        <div class="cookie_display">
+            <div class="cookie_img">
+                <img src="${pageContext.request.contextPath}/static/img/cookie2.jpg" alt="" style="width:200px; height:180px;float: left;">
+            </div>
+            <div class="cookie_text">
+                <p>
+                    阔爱小蛋糕
+                </p>
+                <p>
+                    营养价值极高，色香味俱全！
+                </p>
+            </div>
+        </div>
         <div class="cookie_display">
             <div class="cookie_img">
                 <img src="${pageContext.request.contextPath}/static/img/cookie2.jpg" alt="" style="width:200px; height:180px;float: left;">
