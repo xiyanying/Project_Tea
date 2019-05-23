@@ -161,13 +161,13 @@
 <div class="mid_bg" id="mid_bg">
     <div class="mid_left">
         <div class="mid_left_fruit">
-            <p></p><b><a href="#">水果类</a> </b></p>
+            <p></p><b><a href="#"  style="color: brown">水果类</a> </b></p>
         </div>
         <div class="mid_left_fruit">
             <p><b><a href="#">茶点类</a></b></p>
         </div>
         <div class="mid_left_fruit">
-            <p><b><a href="#" style="color: brown">糕点类</a></b></p>
+            <p><b><a href="#">糕点类</a></b></p>
         </div>
     </div>
     <div id="mid_right">
