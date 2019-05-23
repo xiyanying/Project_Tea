@@ -120,10 +120,10 @@
     <div>
         <table class="title_tab">
             <tr>
-                <td><a href="../../main.jsp" class="text">首页</a></td>
-                <td><a href="${pageContext.request.contextPath}/export/common/teaKinds" class="text">茶歇品类</a></td>
+                <td><a href="${pageContext.request.contextPath}/export/main/image" class="text">首页</a></td>
+                <td><a href="${pageContext.request.contextPath}/export/kind/display" class="text">茶歇品类</a></td>
                 <td><a href="${pageContext.request.contextPath}/export/common/teaStory" class="text">茶歇故事</a></td>
-                <td><a href="${pageContext.request.contextPath}/export/common/tomorrowTea" style="color: brown" class="text">明日茶点</a></td>
+                <td><a href="${pageContext.request.contextPath}/export/tomcookie/display" style="color: brown" class="text">明日茶点</a></td>
                 <td><a href="${pageContext.request.contextPath}/export/common/help" class="text">帮助中心</a></td>
             </tr>
         </table>
@@ -142,45 +142,59 @@
 
         <%--</c:forEach>--%>
         <p style="font-size: 24px;margin-left: 50px;margin-top: 30px; font-family: 'Times New Roman', Times, serif;"><b>明日展示</b></p>
-        <div class="cookie_display">
-            <div class="cookie_img">
-                <img src="${pageContext.request.contextPath}/static/img/cookie2.jpg" alt="" style="width:200px; height:180px;float: left;">
+            <c:forEach items="${cookies}" var="cook">
+                <div class="cookie_display">
+                    <div class="cookie_img">
+                        <img src="${pageContext.request.contextPath}/static/img/${cook.cImagePath}" alt="" style="width:200px; height:180px;float: left;">
+                    </div>
+                    <div class="cookie_text">
+                        <p>
+                            ${cook.cName}
+                        </p>
+                        <p>
+                            ${cook.cIntroduce}
+                        </p>
+                    </div>
+                </div>
+            </c:forEach>
+            <c:if test="${cookies.size()==0}">
+                <h2>明日糕点还未能及时更新，请稍等哦。。。</h2>
+            </c:if>
+            <div>
+                <c:if test="${cookies.size()!=0}">
+                    <a href="${pageContext.request.contextPath}/export/tomcookie/display?type=${type}&page=1">首页</a>
+                    <a href="${pageContext.request.contextPath}/export/tomcookie/display?type=${type}&page=${current+1}">下一页</a>
+                    <a href="${pageContext.request.contextPath}/export/tomcookie/display?type=${type}&page=${current-1}">上一页</a>
+                    <a href="${pageContext.request.contextPath}/export/tomcookie/display?type=${type}&page=${pagecount}">尾页</a>
+                </c:if>
             </div>
-            <div class="cookie_text">
-                <p>
-                    阔爱小蛋糕
-                </p>
-                <p>
-                    营养价值极高，色香味俱全！
-                </p>
-            </div>
-        </div>
-        <div class="cookie_display">
-            <div class="cookie_img">
-                <img src="${pageContext.request.contextPath}/static/img/cookie2.jpg" alt="" style="width:200px; height:180px;float: left;">
-            </div>
-            <div class="cookie_text">
-                <p>
-                    阔爱小蛋糕
-                </p>
-                <p>
-                    营养价值极高，色香味俱全！
-                </p>
-            </div>
-        </div>
-        <div class="cookie_display">
-            <div class="cookie_img">
-                <img src="${pageContext.request.contextPath}/static/img/cookie2.jpg" alt="" style="width:200px; height:180px;float: left;">
-            </div>
-            <div class="cookie_text">
-                <p>
-                    阔爱小蛋糕
-                </p>
-                <p>
-                    营养价值极高，色香味俱全！
-                </p>
-            </div>
-        </div>
+
+<%--        <div class="cookie_display">--%>
+<%--            <div class="cookie_img">--%>
+<%--                <img src="${pageContext.request.contextPath}/static/img/cookie2.jpg" alt="" style="width:200px; height:180px;float: left;">--%>
+<%--            </div>--%>
+<%--            <div class="cookie_text">--%>
+<%--                <p>--%>
+<%--                    阔爱小蛋糕--%>
+<%--                </p>--%>
+<%--                <p>--%>
+<%--                    营养价值极高，色香味俱全！--%>
+<%--                </p>--%>
+<%--            </div>--%>
+<%--        </div>--%>
+<%--        <div class="cookie_display">--%>
+<%--            <div class="cookie_img">--%>
+<%--                <img src="${pageContext.request.contextPath}/static/img/cookie2.jpg" alt="" style="width:200px; height:180px;float: left;">--%>
+<%--            </div>--%>
+<%--            <div class="cookie_text">--%>
+<%--                <p>--%>
+<%--                    阔爱小蛋糕--%>
+<%--                </p>--%>
+<%--                <p>--%>
+<%--                    营养价值极高，色香味俱全！--%>
+<%--                </p>--%>
+<%--            </div>--%>
+<%--        </div>--%>
 
     </div>
 </div>

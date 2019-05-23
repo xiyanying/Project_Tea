@@ -5,6 +5,7 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @Author zhanglipeng
@@ -28,4 +29,8 @@ public interface TomCookieMapper {
      void deleteCookieById(Integer id);
 
      List<TomCookie> getByCondition(@Param("end") Integer end, @Param("time") String dateTime);
+
+    List<TomCookie> selectByPara(@Param("map") Map<String, Object> map, @Param("type") String type, @Param("dayTime") String dayTime);
+
+    Integer getTotal(@Param("type") String type);
 }

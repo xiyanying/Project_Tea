@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: xyy
@@ -5,7 +6,7 @@
   Time: 14:44
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <html>
 <head>
     <title>意见反馈后台显示页面</title>
@@ -194,7 +195,7 @@
                         </li>
                         <li>
                             <div class="left_advise">
-                                <a href="#">意见反馈</a>
+                                <a href="${pageContext.request.contextPath}/info/advise/display">意见反馈</a>
                             </div>
                         </li>
                     </ul>
@@ -209,27 +210,31 @@
                 <table class="tab">
                     <tr class="head">
                         <td>序号</td>
-                        <td>名称</td>
-                        <td>图片路径</td>
-                        <td>类型</td>
+                        <td>标题</td>
+                        <td>意见内容</td>
+                        <td>邮箱地址</td>
                         <td>操作</td>
                     </tr>
-                    <tr>
-                        <td>${status.count}</td>
-                        <td>${tcookie.cName}</td>
-                        <td>${tcookie.cImagePath}</td>
-                        <td>${tcookie.cType}</td>
-                        <td>
-                            <a href="${pageContext.request.contextPath}/tom/delete/cookie?id=${tcookie.tomId}">删除</a></td>
-                    </tr>
-                </table>
-                <!-- <c:if test="${size!=0}">
-                    <div class="page_count_link">
-                        <c:forEach items="${pageCount}" var="num">
-                            <a href="${pageContext.request.contextPath}/tom/cookie/select?type=${type}&current=${num}">${num}</a>
-                        </c:forEach>
+                    <c:forEach items="${advises}" var="adv" varStatus="status">
+                        <tr>
+                            <td>${status.count}</td>
+                            <td>${adv.title}</td>
+                            <td>${adv.content}</td>
+                            <td>${adv.emailAddress}</td>
+                            <td>
+                                <a href="${pageContext.request.contextPath}/info/advise/delete?id=${adv.aId}">删除</a></td>
+                        </tr>
+                    </c:forEach>
+                    <div class="page_count_link">>
+                        <c:if test="${advises.size()!=0}">
+                            <a href="${pageContext.request.contextPath}/info/advise/display?page=1">首页</a>
+                            <a href="${pageContext.request.contextPath}/info/advise/display?page=${current+1}">下一页</a>
+                            <a href="${pageContext.request.contextPath}/info/advise/display?page=${current-1}">上一页</a>
+                            <a href="${pageContext.request.contextPath}/info/advise/display?page=${pagecount}">尾页</a>
+                        </c:if>
                     </div>
-                </c:if> -->
+                </table>
+
             </div>
         </li>
     </ul>

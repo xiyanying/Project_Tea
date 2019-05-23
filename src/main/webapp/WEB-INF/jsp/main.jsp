@@ -178,7 +178,7 @@
             border-radius: 3px;
         }
         .page_count_link{
-            width: 80px;
+            width: 200px;
             height: 30px;
             margin:  10px;
             text-align: center;
@@ -289,7 +289,7 @@
                         </li>
                         <li>
                             <div class="left_advise">
-                                <a href="#">意见反馈</a>
+                                <a href="${pageContext.request.contextPath}/info/advise/display">意见反馈</a>
                             </div>
                         </li>
                         <li>
@@ -317,7 +317,7 @@
                         <td>类型</td>
                         <td>操作</td>
                     </tr>
-                    <c:forEach items="${cookies}" var="tcookie" varStatus="status">
+                    <c:forEach items="${cookies}" var="tcookie" varStatus="status" >
                         <tr>
                             <td><input type="checkbox" name="ids" value="${tcookie.cId}" /></td>
                             <td>${status.count}</td>
@@ -344,9 +344,12 @@
                         </li>
                         <li>
                             <div class="page_count_link">
-                                <c:forEach items="${pageCount}" var="tlist">
-                                    <a href="${pageContext.request.contextPath}/info/getAll/cookie?page=${tlist}&type=${type}">${tlist}</a>
-                                </c:forEach>
+                                <c:if test="${cookies.size()!=0}">
+                                    <a href="${pageContext.request.contextPath}/info/getAll/cookie?type=${type}&page=1">首页</a>
+                                    <a href="${pageContext.request.contextPath}/info/getAll/cookie?type=${type}&page=${current+1}">下一页</a>
+                                    <a href="${pageContext.request.contextPath}/info/getAll/cookie?type=${type}&page=${current-1}">上一页</a>
+                                    <a href="${pageContext.request.contextPath}/info/getAll/cookie?type=${type}&page=${pagecount}">尾页</a>
+                                </c:if>
                             </div>
                         </li>
                         <li>

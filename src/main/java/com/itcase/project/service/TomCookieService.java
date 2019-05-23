@@ -1,5 +1,6 @@
 package com.itcase.project.service;
 
+import com.alibaba.fastjson.JSONObject;
 import com.itcase.project.enetity.Page;
 import com.itcase.project.enetity.TomCookie;
 
@@ -17,5 +18,5 @@ public interface TomCookieService {
 
     void deleteCookie(Integer id);
 
-    List<TomCookie> dayCookie(String dayTime);
+    JSONObject dayCookie(String dayTime, JSONObject para);
 }

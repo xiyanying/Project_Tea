@@ -49,5 +49,22 @@
         select * from work_tomcookie where cookie_creatime = #{time,jdbcType=VARCHAR}
     </select>
 
+    <select id="selectByPara" resultMap="BaseResultMap" >
+        select
+        <include refid="Base_Column_List" />
+        from work_tomcookie where cookie_creatime = #{dayTime,jdbcType=VARCHAR}
+        <if test="type!='all'">
+            and cookie_type = #{type,jdbcType=VARCHAR}
+        </if>
+        limit ${map.start} , ${map.end}
+    </select>
+
+    <select id="getTotal" parameterType="java.lang.String" resultType="java.lang.Integer">
+        select count(*) from work_tomcookie
+        <if test="type!='all'">
+            where cookie_type = #{type,jdbcType=VARCHAR}
+        </if>
+    </select>
+
 
 </mapper>

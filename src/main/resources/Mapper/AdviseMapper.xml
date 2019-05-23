@@ -30,6 +30,12 @@
     where cookie_id = #{id,jdbcType=BIGINT}
   </delete>
 
+    <select id="selectByCondtion" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from advise limit ${map.start} , ${map.end}
+    </select>
+
     <!--
     <insert id="insertCookie" parameterType="com.vipkid.lp.student.provider.entity.Cookie">
     insert into COOKIE_INFO (cookie_id, cookie_name, cookie_introduce,

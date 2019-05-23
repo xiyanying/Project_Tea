@@ -186,10 +186,10 @@
     <div>
         <table class="title_tab">
             <tr>
-                <td><a href="../../main.jsp" class="text">首页</a></td>
-                <td><a href="${pageContext.request.contextPath}/export/common/teaKinds" class="text">茶歇品类</a></td>
+                <td><a href="${pageContext.request.contextPath}/export/main/image" class="text">首页</a></td>
+                <td><a href="${pageContext.request.contextPath}/export/kind/display" class="text">茶歇品类</a></td>
                 <td><a href="${pageContext.request.contextPath}/export/common/teaStory" class="text">茶歇故事</a></td>
-                <td><a href="${pageContext.request.contextPath}/export/common/tomorrowTea" class="text">明日茶点</a></td>
+                <td><a href="${pageContext.request.contextPath}/export/tomcookie/display" class="text">明日茶点</a></td>
                 <td><a href="#" class="text" style="color: brown">帮助中心</a></td>
             </tr>
         </table>

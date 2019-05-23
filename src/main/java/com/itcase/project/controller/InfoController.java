@@ -2,6 +2,7 @@ package com.itcase.project.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.itcase.project.Dao.CookieMapper;
 import com.itcase.project.enetity.Cookie;
 import com.itcase.project.enetity.CookieVo;
 import com.itcase.project.enetity.Result;
@@ -30,6 +31,9 @@ public class InfoController {
     private InfoServiceImpl infoService;
     private Logger logger = LoggerFactory.getLogger(InfoController.class);
 
+    @Autowired
+    private CookieMapper cookieMapper;
+
     @RequestMapping(value = "/add/cookie",method = RequestMethod.POST)
     public String addCookie(@Validated CookieVo cookie, BindingResult bindingResult,Model model) throws Exception{
         //System.out.println(cookie.toString());
@@ -44,7 +48,7 @@ public class InfoController {
             return "/WEB-INF/jsp/add.jsp";
 
         }
-        String localpath = "D:\\java\\Project_Tea\\src\\main\\webapp\\static\\img\\";
+        String localpath = "D:\\apache-tomcat-7.0.52-windows-x64\\apache-tomcat-7.0.52-windows-x64\\apache-tomcat-7.0.52\\webapps\\static\\img\\";
         String fileName = null;
         if(!cookie.getUpload().isEmpty()){
             String contentType = cookie.getUpload().getContentType();
@@ -54,7 +58,7 @@ public class InfoController {
             fileName = cookie.getUpload().getOriginalFilename();
             cookie.getUpload().transferTo(new File(localpath+fileName));
         }
-        String imgPath = "static\\img\\" + fileName;
+        String imgPath = fileName;
         cookie.setcImagePath(imgPath);
         infoService.addCookieService(cookie);
         return "redirect:/info/getAll/cookie";
@@ -89,7 +93,18 @@ public class InfoController {
 
     @RequestMapping(value = "/getAll/cookie",method = RequestMethod.GET)
     public ModelAndView selectAllCookie(ModelAndView modelAndView, @RequestParam(defaultValue = "all") String type,@RequestParam(defaultValue = "1") Integer page,@RequestParam(defaultValue = "5") Integer pagesize){
+        Integer total =cookieMapper.getTotal(type);
+        int pageCount = total / pagesize;
+        if(total % pagesize > 0){
+            pageCount++;
+        }
+        if(page>=pageCount){
+            page = pageCount;
+        }
 
+        if(page<=1){
+            page=1;
+        }
         JSONObject para = new JSONObject();
         para.put("type",type);
         para.put("page",page);
@@ -98,16 +113,10 @@ public class InfoController {
         Integer size =(Integer) object.get("total");
         List<Cookie> cookies = (List<Cookie>)object.get("cookies");
 
-        int pageCount = size / pagesize;
-        if(size % pagesize > 0){
-            pageCount++;
-        }
-        List<Integer> list = new ArrayList<>() ;
-        for(int i = 1; i<=pageCount;i++){
-            list.add(i);
-        }
+        modelAndView.addObject("start",(page-1)*pagesize+1);
+        modelAndView.addObject("pagecount",pageCount);
+        modelAndView.addObject("current",page);
         modelAndView.addObject("type",type);
-        modelAndView.addObject("pageCount",list);
         modelAndView.addObject("cookies",cookies);
         modelAndView.setViewName("/WEB-INF/jsp/main.jsp");
        return modelAndView;
@@ -126,6 +135,11 @@ public class InfoController {
         modelAndView.addObject("ucookie",cookie);
         modelAndView.setViewName("/WEB-INF/jsp/update.jsp");
         return modelAndView;
+    }
+
+    @RequestMapping(value = "/advise",method = RequestMethod.GET)
+    public String getAdvise(){
+        return "/WEB-INF/jsp/adviseShow.jsp";
     }
 
 }

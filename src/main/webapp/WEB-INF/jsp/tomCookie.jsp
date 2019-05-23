@@ -142,7 +142,7 @@
         }
 
         .page_count_link{
-            width: 80px;
+            width: 200px;
             height: 35px;
             position: absolute;
             top:450px;
@@ -196,7 +196,7 @@
                         </li>
                         <li>
                             <div class="left_advise">
-                                <a href="#">意见反馈</a>
+                                <a href="${pageContext.request.contextPath}/info/advise/display">意见反馈</a>
                             </div>
                         </li>
                     </ul>
@@ -229,13 +229,14 @@
                         </tr>
                     </c:forEach>
                 </table>
-                <c:if test="${size!=0}">
-                    <div class="page_count_link">
-                        <c:forEach items="${pageCount}" var="num">
-                            <a href="${pageContext.request.contextPath}/tom/cookie/select?type=${type}&current=${num}">${num}</a>
-                        </c:forEach>
-                    </div>
-                </c:if>
+                <div class="page_count_link">
+                    <c:if test="${data.size()!=0}">
+                        <a href="${pageContext.request.contextPath}/tom/cookie/select?type=${type}&current=1">首页</a>
+                        <a href="${pageContext.request.contextPath}/tom/cookie/select?type=${type}&current=${current+1}">下一页</a>
+                        <a href="${pageContext.request.contextPath}/tom/cookie/select?type=${type}&current=${current-1}">上一页</a>
+                        <a href="${pageContext.request.contextPath}/tom/cookie/select?type=${type}&current=${pagecount}">尾页</a>
+                    </c:if>
+                </div>
             </div>
         </li>
     </ul>

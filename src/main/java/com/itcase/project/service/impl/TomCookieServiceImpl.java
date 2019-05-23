@@ -1,5 +1,6 @@
 package com.itcase.project.service.impl;
 
+import com.alibaba.fastjson.JSONObject;
 import com.itcase.project.Dao.CookieMapper;
 import com.itcase.project.Dao.TomCookieMapper;
 import com.itcase.project.enetity.Cookie;
@@ -14,11 +15,7 @@ import org.springframework.stereotype.Service;
 
 import javax.xml.ws.soap.Addressing;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.toList;
@@ -111,8 +108,24 @@ public class TomCookieServiceImpl implements TomCookieService {
     }
 
     @Override
-    public List<TomCookie> dayCookie(String dayTime) {
-        List<TomCookie> tomCookies = tomCookieMapper.selectCookieByTime(dayTime);
-        return tomCookies;
+    public JSONObject dayCookie(String dayTime, JSONObject para) {
+        JSONObject object = new JSONObject();
+        String type = (String) para.get("type");
+        Integer page = (Integer) para.get("page");
+        Integer pagesize = (Integer)para.get("pagesize");
+        Map<String,Object> map = new HashMap();
+        Integer start = (page-1) * pagesize;
+        map.put("start",start);
+        map.put("end",pagesize);
+        Integer size = null;
+        if("all".equals(type)){
+            size = tomCookieMapper.getTotal(type);
+        }else {
+            size = tomCookieMapper.getTotal(type);
+        }
+        List<TomCookie> cookies = tomCookieMapper.selectByPara(map,type,dayTime);
+        object.put("total",size);
+        object.put("cookies",cookies);
+        return object;
     }
 }

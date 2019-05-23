@@ -1,5 +1,6 @@
 package com.itcase.project.controller;
 
+import com.itcase.project.Dao.TomCookieMapper;
 import com.itcase.project.enetity.Page;
 import com.itcase.project.enetity.TomCookie;
 import com.itcase.project.service.impl.TomCookieServiceImpl;
@@ -29,6 +30,8 @@ public class TomCookieController {
 
     @Autowired
     private TomCookieServiceImpl service;
+    @Autowired
+    private TomCookieMapper mapper;
 
     @RequestMapping(value = "/pitch",method = RequestMethod.GET)
     public String pitchCookie(String id){
@@ -44,17 +47,23 @@ public class TomCookieController {
 
     @RequestMapping(value = "/cookie/select",method = RequestMethod.GET)
     public ModelAndView tomCookieSelect(@RequestParam(defaultValue = "all") String type, @RequestParam(defaultValue = "1") Integer current, @RequestParam(defaultValue = "5") Integer pageSize, ModelAndView modelAndView){
-
-        Page<List<TomCookie>> listPage = service.selectTomCookie(current, pageSize, type);
-        Integer pageCount = listPage.getPageCount();
-        List<Integer> num = new ArrayList<>();
-        for (int i= 1;i<=pageCount;i++){
-            num.add(i);
+        Integer total = mapper.getTotal(type);
+        int pageCount = total / pageSize;
+        if(total % pageSize > 0){
+            pageCount++;
         }
+        if(current>=pageCount){
+            current = pageCount;
+        }
+
+        if(current<=1){
+            current=1;
+        }
+        Page<List<TomCookie>> listPage = service.selectTomCookie(current, pageSize, type);
+
         modelAndView.addObject("data",listPage.getDate());
+        modelAndView.addObject("current",current);
         modelAndView.addObject("list",listPage);
-        modelAndView.addObject("pageCount",num);
-        modelAndView.addObject("size",num.size());
         modelAndView.addObject("type",type);
         modelAndView.setViewName("/WEB-INF/jsp/tomCookie.jsp");
         return modelAndView;

@@ -1,10 +1,4 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: xyy
-  Date: 2019/5/16
-  Time: 20:33
-  To change this template use File | Settings | File Templates.
---%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <html>
 <head>
@@ -149,10 +143,10 @@
     <div>
         <table class="title_tab">
             <tr>
-                <td><a href="../../main.jsp" class="text">首页</a></td>
-                <td><a href="${pageContext.request.contextPath}/export/common/teaKinds" style="color: brown" class="text">茶歇品类</a></td>
+                <td><a href="${pageContext.request.contextPath}/export/main/image" class="text">首页</a></td>
+                <td><a href="${pageContext.request.contextPath}/export/kind/display" style="color: brown" class="text">茶歇品类</a></td>
                 <td><a href="${pageContext.request.contextPath}/export/common/teaStory" class="text">茶歇故事</a></td>
-                <td><a href="${pageContext.request.contextPath}/export/common/tomorrowTea" class="text">明日茶点</a></td>
+                <td><a href="${pageContext.request.contextPath}/export/tomcookie/display" class="text">明日茶点</a></td>
                 <td><a href="${pageContext.request.contextPath}/export/common/help" class="text">帮助中心</a></td>
             </tr>
         </table>
@@ -161,89 +155,105 @@
 <div class="mid_bg" id="mid_bg">
     <div class="mid_left">
         <div class="mid_left_fruit">
-            <p></p><b><a href="#">水果类</a> </b></p>
+            <p></p><b><a href="${pageContext.request.contextPath}/export/kind/display?type=fruit">水果类</a> </b></p>
         </div>
         <div class="mid_left_fruit">
-            <p><b><a href="#">茶点类</a></b></p>
+            <p><b><a href="${pageContext.request.contextPath}/export/kind/display?type=tea">茶点类</a></b></p>
         </div>
         <div class="mid_left_fruit">
-            <p><b><a href="#" style="color: brown">糕点类</a></b></p>
+            <p><b><a href="${pageContext.request.contextPath}/export/kind/display?type=cookie">糕点类</a></b></p>
         </div>
     </div>
     <div id="mid_right">
-        <div class="cookie_display">
-            <div class="cookie_img">
-                <img src="${pageContext.request.contextPath}/static/img/cookie2.jpg" alt="" style="width:200px; height:170px;">
-                <p>
-                    阔爱小蛋糕
-                </p>
+        <c:forEach items="${cookies}" var="cok">
+            <div class="cookie_display">
+                <div class="cookie_img">
+                    <img src="${pageContext.request.contextPath}/static/img/${cok.cImagePath}" alt="" style="width:200px; height:170px;">
+                    <p>
+                        ${cok.cName}
+                    </p>
+                </div>
             </div>
+        </c:forEach>
+        <c:if test="${cookies.size()==0}">
+            <h2>此类糕点还未能及时更新，敬请期待。。。</h2>
+        </c:if>
+        <div>
+            <c:if test="${cookies.size()!=0}">
+                <a href="${pageContext.request.contextPath}/export/kind/display?type=${type}&page=1">首页</a>
+                <a href="${pageContext.request.contextPath}/export/kind/display?type=${type}&page=${current+1}">下一页</a>
+                <a href="${pageContext.request.contextPath}/export/kind/display?type=${type}&page=${current-1}">上一页</a>
+                <a href="${pageContext.request.contextPath}/export/kind/display?type=${type}&page=${pagecount}">尾页</a>
+            </c:if>
         </div>
-        <div class="cookie_display">
-            <div class="cookie_img">
-                <img src="${pageContext.request.contextPath}/static/img/cookie2.jpg" alt="" style="width:200px; height:170px;">
-                <p>
-                    阔爱小蛋糕
-                </p>
-            </div>
-        </div>
-        <div class="cookie_display">
-            <div class="cookie_img">
-                <img src="${pageContext.request.contextPath}/static/img/cookie2.jpg" alt="" style="width:200px; height:170px;">
-                <p>
-                    阔爱小蛋糕
-                </p>
-            </div>
-        </div>
-        <div class="cookie_display">
-            <div class="cookie_img">
-                <img src="${pageContext.request.contextPath}/static/img/cookie2.jpg" alt="" style="width:200px; height:170px;">
-                <p>
-                    阔爱小蛋糕
-                </p>
-            </div>
-        </div>
-        <div class="cookie_display">
-            <div class="cookie_img">
-                <img src="${pageContext.request.contextPath}/static/img/cookie2.jpg" alt="" style="width:200px; height:170px;">
-                <p>
-                    阔爱小蛋糕
-                </p>
-            </div>
-        </div>
-        <div class="cookie_display">
-            <div class="cookie_img">
-                <img src="${pageContext.request.contextPath}/static/img/cookie2.jpg" alt="" style="width:200px; height:170px;">
-                <p>
-                    阔爱小蛋糕
-                </p>
-            </div>
-        </div>
-        <div class="cookie_display">
-            <div class="cookie_img">
-                <img src="${pageContext.request.contextPath}/static/img/cookie2.jpg" alt="" style="width:200px; height:170px;">
-                <p>
-                    阔爱小蛋糕
-                </p>
-            </div>
-        </div>
-        <div class="cookie_display">
-            <div class="cookie_img">
-                <img src="${pageContext.request.contextPath}/static/img/cookie2.jpg" alt="" style="width:200px; height:170px;">
-                <p>
-                    阔爱小蛋糕
-                </p>
-            </div>
-        </div>
-        <div class="cookie_display">
-            <div class="cookie_img">
-                <img src="${pageContext.request.contextPath}/static/img/cookie2.jpg" alt="" style="width:200px; height:170px;">
-                <p>
-                    阔爱小蛋糕
-                </p>
-            </div>
-        </div>
+
+
+<%--        <div class="cookie_display">--%>
+<%--            <div class="cookie_img">--%>
+<%--                <img src="${pageContext.request.contextPath}/static/img/cookie2.jpg" alt="" style="width:200px; height:170px;">--%>
+<%--                <p>--%>
+<%--                    阔爱小蛋糕--%>
+<%--                </p>--%>
+<%--            </div>--%>
+<%--        </div>--%>
+<%--        <div class="cookie_display">--%>
+<%--            <div class="cookie_img">--%>
+<%--                <img src="${pageContext.request.contextPath}/static/img/cookie2.jpg" alt="" style="width:200px; height:170px;">--%>
+<%--                <p>--%>
+<%--                    阔爱小蛋糕--%>
+<%--                </p>--%>
+<%--            </div>--%>
+<%--        </div>--%>
+<%--        <div class="cookie_display">--%>
+<%--            <div class="cookie_img">--%>
+<%--                <img src="${pageContext.request.contextPath}/static/img/cookie2.jpg" alt="" style="width:200px; height:170px;">--%>
+<%--                <p>--%>
+<%--                    阔爱小蛋糕--%>
+<%--                </p>--%>
+<%--            </div>--%>
+<%--        </div>--%>
+<%--        <div class="cookie_display">--%>
+<%--            <div class="cookie_img">--%>
+<%--                <img src="${pageContext.request.contextPath}/static/img/cookie2.jpg" alt="" style="width:200px; height:170px;">--%>
+<%--                <p>--%>
+<%--                    阔爱小蛋糕--%>
+<%--                </p>--%>
+<%--            </div>--%>
+<%--        </div>--%>
+<%--        <div class="cookie_display">--%>
+<%--            <div class="cookie_img">--%>
+<%--                <img src="${pageContext.request.contextPath}/static/img/cookie2.jpg" alt="" style="width:200px; height:170px;">--%>
+<%--                <p>--%>
+<%--                    阔爱小蛋糕--%>
+<%--                </p>--%>
+<%--            </div>--%>
+<%--        </div>--%>
+<%--        <div class="cookie_display">--%>
+<%--            <div class="cookie_img">--%>
+<%--                <img src="${pageContext.request.contextPath}/static/img/cookie2.jpg" alt="" style="width:200px; height:170px;">--%>
+<%--                <p>--%>
+<%--                    阔爱小蛋糕--%>
+<%--                </p>--%>
+<%--            </div>--%>
+<%--        </div>--%>
+<%--        <div class="cookie_display">--%>
+<%--            <div class="cookie_img">--%>
+<%--                <img src="${pageContext.request.contextPath}/static/img/cookie2.jpg" alt="" style="width:200px; height:170px;">--%>
+<%--                <p>--%>
+<%--                    阔爱小蛋糕--%>
+<%--                </p>--%>
+<%--            </div>--%>
+<%--        </div>--%>
+<%--        <div class="cookie_display">--%>
+<%--            <div class="cookie_img">--%>
+<%--                <img src="${pageContext.request.contextPath}/static/img/cookie2.jpg" alt="" style="width:200px; height:170px;">--%>
+<%--                <p>--%>
+<%--                    阔爱小蛋糕--%>
+<%--                </p>--%>
+<%--            </div>--%>
+<%--        </div>--%>
     </div>
+
 </div>
 <div class="bottom">
     地址：陕西省西安市电子二路     邮编：710300
