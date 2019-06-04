@@ -379,6 +379,11 @@
                                <input type="button" onclick="aa()" id="tomTea_btn" value="提交选中"/>
                             </div>
                         </li>
+                        <li>
+                            <div class="page_tea_link">
+                                <a href="${pageContext.request.contextPath}/export/data/cookie?type=${type}">下载execl</a>
+                            </div>
+                        </li>
                     </ul>
                 </div>
 
