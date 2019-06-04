@@ -54,7 +54,7 @@ public class AdviseDisplay {
         return "/WEB-INF/jsp/adviseShow.jsp";
 
     }
-
+    @RequestMapping(value = "/delete",method = RequestMethod.GET)
     public String deleteAdvise(Integer id){
         logger.info("delete advise id is :{}",id);
         if(id<0){

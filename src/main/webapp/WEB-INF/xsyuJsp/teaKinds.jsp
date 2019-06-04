@@ -126,6 +126,26 @@
             border-radius: 5px;
             float: left;
         }
+        .cookie_display:hover{
+            background-color: beige;
+        }
+        .tea_page{
+            width: 350px;
+            height: 50px;
+            color: black;
+            position: absolute;
+            top: 85%;
+            margin-top: 20px;
+            margin-left: 20%;
+        }
+        .page_tab{
+            width: 300px;
+            height: 50px;
+            position: absolute;
+            left: 150px;
+            top:20px;
+            margin-top: 40px;
+        }
     </style>
 </head>
 <body>
@@ -178,80 +198,19 @@
         <c:if test="${cookies.size()==0}">
             <h2>此类糕点还未能及时更新，敬请期待。。。</h2>
         </c:if>
-        <div>
-            <c:if test="${cookies.size()!=0}">
-                <a href="${pageContext.request.contextPath}/export/kind/display?type=${type}&page=1">首页</a>
-                <a href="${pageContext.request.contextPath}/export/kind/display?type=${type}&page=${current+1}">下一页</a>
-                <a href="${pageContext.request.contextPath}/export/kind/display?type=${type}&page=${current-1}">上一页</a>
-                <a href="${pageContext.request.contextPath}/export/kind/display?type=${type}&page=${pagecount}">尾页</a>
-            </c:if>
+        <div class="tea_page">
+            <table class="page_tab">
+                <c:if test="${cookies.size()!=0}">
+                    <tr>
+                        <td><a href="${pageContext.request.contextPath}/export/kind/display?type=${type}&page=1">首页</a></td>
+                        <td><a href="${pageContext.request.contextPath}/export/kind/display?type=${type}&page=${current-1}">上一页</a></td>
+                        <td><a href="${pageContext.request.contextPath}/export/kind/display?type=${type}&page=${current+1}">下一页</a></td>
+                        <td><a href="${pageContext.request.contextPath}/export/kind/display?type=${type}&page=${pagecount}">尾页</a></td>
+                    </tr>
+                </c:if>
+            </table>
+
         </div>
-
-
-<%--        <div class="cookie_display">--%>
-<%--            <div class="cookie_img">--%>
-<%--                <img src="${pageContext.request.contextPath}/static/img/cookie2.jpg" alt="" style="width:200px; height:170px;">--%>
-<%--                <p>--%>
-<%--                    阔爱小蛋糕--%>
-<%--                </p>--%>
-<%--            </div>--%>
-<%--        </div>--%>
-<%--        <div class="cookie_display">--%>
-<%--            <div class="cookie_img">--%>
-<%--                <img src="${pageContext.request.contextPath}/static/img/cookie2.jpg" alt="" style="width:200px; height:170px;">--%>
-<%--                <p>--%>
-<%--                    阔爱小蛋糕--%>
-<%--                </p>--%>
-<%--            </div>--%>
-<%--        </div>--%>
-<%--        <div class="cookie_display">--%>
-<%--            <div class="cookie_img">--%>
-<%--                <img src="${pageContext.request.contextPath}/static/img/cookie2.jpg" alt="" style="width:200px; height:170px;">--%>
-<%--                <p>--%>
-<%--                    阔爱小蛋糕--%>
-<%--                </p>--%>
-<%--            </div>--%>
-<%--        </div>--%>
-<%--        <div class="cookie_display">--%>
-<%--            <div class="cookie_img">--%>
-<%--                <img src="${pageContext.request.contextPath}/static/img/cookie2.jpg" alt="" style="width:200px; height:170px;">--%>
-<%--                <p>--%>
-<%--                    阔爱小蛋糕--%>
-<%--                </p>--%>
-<%--            </div>--%>
-<%--        </div>--%>
-<%--        <div class="cookie_display">--%>
-<%--            <div class="cookie_img">--%>
-<%--                <img src="${pageContext.request.contextPath}/static/img/cookie2.jpg" alt="" style="width:200px; height:170px;">--%>
-<%--                <p>--%>
-<%--                    阔爱小蛋糕--%>
-<%--                </p>--%>
-<%--            </div>--%>
-<%--        </div>--%>
-<%--        <div class="cookie_display">--%>
-<%--            <div class="cookie_img">--%>
-<%--                <img src="${pageContext.request.contextPath}/static/img/cookie2.jpg" alt="" style="width:200px; height:170px;">--%>
-<%--                <p>--%>
-<%--                    阔爱小蛋糕--%>
-<%--                </p>--%>
-<%--            </div>--%>
-<%--        </div>--%>
-<%--        <div class="cookie_display">--%>
-<%--            <div class="cookie_img">--%>
-<%--                <img src="${pageContext.request.contextPath}/static/img/cookie2.jpg" alt="" style="width:200px; height:170px;">--%>
-<%--                <p>--%>
-<%--                    阔爱小蛋糕--%>
-<%--                </p>--%>
-<%--            </div>--%>
-<%--        </div>--%>
-<%--        <div class="cookie_display">--%>
-<%--            <div class="cookie_img">--%>
-<%--                <img src="${pageContext.request.contextPath}/static/img/cookie2.jpg" alt="" style="width:200px; height:170px;">--%>
-<%--                <p>--%>
-<%--                    阔爱小蛋糕--%>
-<%--                </p>--%>
-<%--            </div>--%>
-<%--        </div>--%>
     </div>
 
 </div>

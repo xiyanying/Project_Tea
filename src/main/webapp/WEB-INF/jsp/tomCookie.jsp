@@ -173,7 +173,7 @@
         西安石油大学茶歇后台管理
     </div>
     <div class="top_welcome">
-        ${userName},欢迎您！
+        ${userName}Admin,欢迎您！
     </div>
 </div>
 
@@ -232,8 +232,8 @@
                 <div class="page_count_link">
                     <c:if test="${data.size()!=0}">
                         <a href="${pageContext.request.contextPath}/tom/cookie/select?type=${type}&current=1">首页</a>
-                        <a href="${pageContext.request.contextPath}/tom/cookie/select?type=${type}&current=${current+1}">下一页</a>
                         <a href="${pageContext.request.contextPath}/tom/cookie/select?type=${type}&current=${current-1}">上一页</a>
+                        <a href="${pageContext.request.contextPath}/tom/cookie/select?type=${type}&current=${current+1}">下一页</a>
                         <a href="${pageContext.request.contextPath}/tom/cookie/select?type=${type}&current=${pagecount}">尾页</a>
                     </c:if>
                 </div>

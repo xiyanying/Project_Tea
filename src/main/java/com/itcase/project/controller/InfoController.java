@@ -48,7 +48,7 @@ public class InfoController {
             return "/WEB-INF/jsp/add.jsp";
 
         }
-        String localpath = "D:\\apache-tomcat-7.0.52-windows-x64\\apache-tomcat-7.0.52-windows-x64\\apache-tomcat-7.0.52\\webapps\\static\\img\\";
+        String localpath = "D:\\apache-tomcat-7.0.93\\webapps\\static\\img\\";
         String fileName = null;
         if(!cookie.getUpload().isEmpty()){
             String contentType = cookie.getUpload().getContentType();
