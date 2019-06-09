@@ -69,7 +69,6 @@ public class ExeclUtil {
                     String methodName = "get"+fieldName;
                     Method getMethod = t.getClass().getDeclaredMethod(methodName,new Class[]{});
                     Object value = getMethod.invoke(t, new Object[]{});
-
                     if(null == value)
                         value ="";
                     cell.setCellValue(value.toString());

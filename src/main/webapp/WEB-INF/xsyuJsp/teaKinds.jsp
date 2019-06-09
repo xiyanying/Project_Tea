@@ -76,12 +76,12 @@
 
         .mid_bg{
             width: 100%;
-            height: 950px;
+            height: 1010px;
             background-image: url("${pageContext.request.contextPath}/static/img/bg.jpg");
         }
         .mid_left{
             width:240px;
-            height: 914px;
+            height: 984px;
             position: absolute;
             left: 10%;
             top: 25%;
@@ -91,7 +91,7 @@
         }
         #mid_right{
             width:800px;
-            height: 914px;
+            height: 984px;
             position: absolute;
             left: 27.9%;
             top: 25%;
@@ -114,20 +114,64 @@
             background-color: darkgray;
             text-align: center;
         }
-        .cookie_display{
+        .wrap{
             width: 200px;
-            height: auto;
-            border: 4px solid silver;
+            height: 250px;
             text-align: center;
-            font-size: 18px;
-            position:relative;
-            margin-left: 50px;
-            margin-top: 40px;
+            font-size: 16px;
+            margin-left: 40px;
+            margin-top: 50px;
+            position:absolute;
             border-radius: 5px;
             float: left;
         }
-        .cookie_display:hover{
+        .cookie_display{
+            width: 200px;
+            height: 250px;
+            border: 4px solid silver;
+            text-align: center;
+            font-size: 18px;
+            position:absolute;
+            border-radius: 5px;
+            float: left;
+        }
+        .cookie_intro{
+            width: 200px;
+            height: 250px;
+            border: 4px solid silver;
+            text-align: center;
+            font-size: 14px;
+            position:absolute;
+            border-radius: 5px;
+            float: left;
+            color: maroon;
+        }
+        .wrap{
+            position: relative;
+        }
+        .cookie_display{
+            z-index: 2;
+        }
+        .cookie_intro{
+            transform: rotateY(180deg);
+        }
+        .wrap:hover .cookie_intro{
+            /*背面作为正面*/
+            transform: rotateY(0deg);
+        }
+        .wrap:hover .cookie_display{
+            /*正面作为背面*/
+            transform: rotateY(180deg);
+        }
+        /*.cookie_display:hover{
             background-color: beige;
+        }*/
+        .cookie_display,.cookie_intro{
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: all 1s;
+            backface-visibility:hidden;    /*这个属性至关重要，当元素不面向屏幕时不可见，不然的话上面的div翻转180度后还是覆盖在下面的div上*/
         }
         .tea_page{
             width: 350px;
@@ -135,7 +179,7 @@
             color: black;
             position: absolute;
             top: 85%;
-            margin-top: 20px;
+            margin-top: 30px;
             margin-left: 20%;
         }
         .page_tab{
@@ -147,6 +191,12 @@
             margin-top: 40px;
         }
     </style>
+    <script type="text/javascript">
+        var parentDiv=document.getElementById("disp");
+        parentDiv.addEventListener("mouseover", function () {
+            console.log("父div的mouseover事件被触发");
+        },false);
+    </script>
 </head>
 <body>
 <div class="top">
@@ -186,12 +236,17 @@
     </div>
     <div id="mid_right">
         <c:forEach items="${cookies}" var="cok">
-            <div class="cookie_display">
-                <div class="cookie_img">
-                    <img src="${pageContext.request.contextPath}/static/img/${cok.cImagePath}" alt="" style="width:200px; height:170px;">
-                    <p>
-                        ${cok.cName}
-                    </p>
+            <div class="wrap">
+                <div class="cookie_display" id="disp">
+                    <div class="cookie_img">
+                        <img src="${pageContext.request.contextPath}/static/img/${cok.cImagePath}" alt="" style="width:200px; height:170px;">
+                        <p>
+                                ${cok.cName}
+                        </p>
+                    </div>
+                </div>
+                <div class="cookie_intro">
+                        ${cok.cIntroduce}
                 </div>
             </div>
         </c:forEach>

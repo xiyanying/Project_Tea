@@ -37,7 +37,7 @@ public class TomDisplayController {
         Date time = instance.getTime();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         String tomTime = sdf.format(time);
-        Integer total = cookieMapper.getTotal(type);
+        Integer total = cookieMapper.getTotalByTime(type,tomTime);
         int pageCount = total / pagesize;
         if(total % pagesize > 0){
             pageCount++;

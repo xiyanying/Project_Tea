@@ -173,7 +173,7 @@
         西安石油大学茶歇后台管理
     </div>
     <div class="top_welcome">
-        ${userName}Admin,欢迎您！
+        ${user.userName},欢迎您！
     </div>
 </div>
 

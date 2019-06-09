@@ -3,9 +3,11 @@ package com.itcase.project.controller;
 import com.alibaba.fastjson.JSONObject;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.itcase.project.Dao.CookieMapper;
+import com.itcase.project.config.LocalUser;
 import com.itcase.project.enetity.Cookie;
 import com.itcase.project.enetity.CookieVo;
 import com.itcase.project.enetity.Result;
+import com.itcase.project.enetity.User;
 import com.itcase.project.service.impl.InfoServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,6 +20,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.sound.midi.SoundbankResource;
 import java.io.File;
 import java.util.ArrayList;
@@ -33,6 +36,9 @@ public class InfoController {
 
     @Autowired
     private CookieMapper cookieMapper;
+
+    @Autowired
+    private LocalUser localUser;
 
     @RequestMapping(value = "/add/cookie",method = RequestMethod.POST)
     public String addCookie(@Validated CookieVo cookie, BindingResult bindingResult,Model model) throws Exception{
@@ -52,10 +58,11 @@ public class InfoController {
         String fileName = null;
         if(!cookie.getUpload().isEmpty()){
             String contentType = cookie.getUpload().getContentType();
-            System.out.println(contentType);
+            //System.out.println(contentType);
             //获得文件后缀名
             String suffixName=contentType.substring(contentType.indexOf("/")+1);
             fileName = cookie.getUpload().getOriginalFilename();
+            // 上传图片操作
             cookie.getUpload().transferTo(new File(localpath+fileName));
         }
         String imgPath = fileName;
@@ -92,7 +99,8 @@ public class InfoController {
     }
 
     @RequestMapping(value = "/getAll/cookie",method = RequestMethod.GET)
-    public ModelAndView selectAllCookie(ModelAndView modelAndView, @RequestParam(defaultValue = "all") String type,@RequestParam(defaultValue = "1") Integer page,@RequestParam(defaultValue = "5") Integer pagesize){
+    public ModelAndView selectAllCookie(ModelAndView modelAndView, @RequestParam(defaultValue = "all") String type, @RequestParam(defaultValue = "1") Integer page, @RequestParam(defaultValue = "5") Integer pagesize,
+                                        HttpServletRequest request){
         Integer total =cookieMapper.getTotal(type);
         int pageCount = total / pagesize;
         if(total % pagesize > 0){
@@ -112,12 +120,13 @@ public class InfoController {
         JSONObject object = infoService.selectAllService(para);
         Integer size =(Integer) object.get("total");
         List<Cookie> cookies = (List<Cookie>)object.get("cookies");
-
+        User user = (User) request.getSession().getAttribute("user");
         modelAndView.addObject("start",(page-1)*pagesize+1);
         modelAndView.addObject("pagecount",pageCount);
         modelAndView.addObject("current",page);
         modelAndView.addObject("type",type);
         modelAndView.addObject("cookies",cookies);
+        modelAndView.addObject("user",user);
         modelAndView.setViewName("/WEB-INF/jsp/main.jsp");
        return modelAndView;
     }

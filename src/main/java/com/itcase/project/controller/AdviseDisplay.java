@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.itcase.project.Dao.AdviseMapper;
 import com.itcase.project.enetity.Advise;
 import com.itcase.project.enetity.Cookie;
+import com.itcase.project.enetity.User;
 import com.itcase.project.service.impl.AdviseServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Controller
@@ -28,7 +30,8 @@ public class AdviseDisplay {
     private AdviseServiceImpl service;
 
     @RequestMapping(value = "/display",method = RequestMethod.GET)
-    public String adviseDisplay(Model model, @RequestParam(defaultValue = "1") Integer page, @RequestParam(defaultValue = "5")Integer pagesize){
+    public String adviseDisplay(Model model, @RequestParam(defaultValue = "1") Integer page, @RequestParam(defaultValue = "5")Integer pagesize,
+                                HttpServletRequest request){
         Integer total = adviseMapper.getTotal();
         int pageCount = total / pagesize;
         if(total % pagesize > 0){
@@ -46,11 +49,12 @@ public class AdviseDisplay {
         para.put("pagesize",pagesize);
         JSONObject object = service.selectAllAdvise(para);
         List<Advise> advises = (List<Advise>)object.get("advises");
-
+        User user = (User) request.getSession().getAttribute("user");
         model.addAttribute("pagecount",pageCount);
         model.addAttribute("current",page);
         model.addAttribute("advises",advises);
         model.addAttribute("start",(page-1)*pagesize+1);
+        model.addAttribute("user",user);
         return "/WEB-INF/jsp/adviseShow.jsp";
 
     }

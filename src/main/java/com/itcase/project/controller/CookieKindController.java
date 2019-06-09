@@ -31,6 +31,7 @@ public class CookieKindController {
 
     @RequestMapping(value = "/display",method = RequestMethod.GET)
     public ModelAndView displayKind(ModelAndView model, @RequestParam(defaultValue = "all") String type, @RequestParam(defaultValue = "1") Integer page, @RequestParam(defaultValue = "9")Integer pagesize){
+        // 获取总条数
         Integer total = cookieMapper.getTotal(type);
         int pageCount = total / pagesize;
         if(total % pagesize > 0){

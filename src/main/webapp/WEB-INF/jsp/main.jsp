@@ -118,7 +118,7 @@
             padding-left: 20px;
         }
         .top_welcome{
-            width: 200px;
+            width: 400px;
             height: 40px;
             color: white;
             text-align: center;
@@ -275,7 +275,8 @@
         西安石油大学茶歇后台管理
     </div>
     <div class="top_welcome">
-        ${userName}Admin,欢迎您！
+        ${user.userName},欢迎您！
+            <a href="${pageContext.request.contextPath}/user/destory">退出</a>
     </div>
 </div>
 <div class="manager_main_bottom">

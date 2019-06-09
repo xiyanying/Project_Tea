@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.itcase.project.Dao.AdviseMapper">
-    <resultMap id="BaseResultMap" type="advise">
+    <resultMap id="BaseResultMap" type="com.itcase.project.enetity.Advise">
         <id column="advise_id" jdbcType="BIGINT" property="aId" />
         <result column="advise_title" jdbcType="VARCHAR" property="title" />
         <result column="advise_content" jdbcType="VARCHAR" property="content" />
@@ -47,7 +47,7 @@
   </insert>
   -->
 
-    <insert id="insertAdivise" parameterType="advise" useGeneratedKeys="true" keyColumn="advise_id" >
+    <insert id="insertAdivise" parameterType="com.itcase.project.enetity.Advise" useGeneratedKeys="true" keyColumn="advise_id" >
         insert into advise
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="aId != null">
