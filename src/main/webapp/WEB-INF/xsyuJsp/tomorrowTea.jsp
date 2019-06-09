@@ -103,6 +103,23 @@
             border-radius: 5px;
             float: left;
         }
+        .tea_page{
+            width: 350px;
+            height: 50px;
+            color: black;
+            position: absolute;
+            top: 85%;
+            margin-top: 20px;
+            margin-left: 20%;
+        }
+        .page_tab{
+            width: 300px;
+            height: 50px;
+            position: absolute;
+            left: 150px;
+            top:20px;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
@@ -141,15 +158,16 @@
             <%--</div>--%>
 
         <%--</c:forEach>--%>
-        <p style="font-size: 24px;margin-left: 50px;margin-top: 30px; font-family: 'Times New Roman', Times, serif;"><b>明日展示</b></p>
+        <p style="font-size: 20px;margin-left: 50px;margin-top: 30px; font-family: 'Times New Roman', Times, serif;"><b>明日展示</b></p>
             <c:forEach items="${cookies}" var="cook">
                 <div class="cookie_display">
                     <div class="cookie_img">
                         <img src="${pageContext.request.contextPath}/static/img/${cook.cImagePath}" alt="" style="width:200px; height:180px;float: left;">
                     </div>
                     <div class="cookie_text">
-                        <p>
+                        <p><b>
                             ${cook.cName}
+                        </b>
                         </p>
                         <p>
                             ${cook.cIntroduce}
@@ -160,42 +178,18 @@
             <c:if test="${cookies.size()==0}">
                 <h2>明日糕点还未能及时更新，请稍等哦。。。</h2>
             </c:if>
-            <div>
-                <c:if test="${cookies.size()!=0}">
-                    <a href="${pageContext.request.contextPath}/export/tomcookie/display?type=${type}&page=1">首页</a>
-                    <a href="${pageContext.request.contextPath}/export/tomcookie/display?type=${type}&page=${current+1}">下一页</a>
-                    <a href="${pageContext.request.contextPath}/export/tomcookie/display?type=${type}&page=${current-1}">上一页</a>
-                    <a href="${pageContext.request.contextPath}/export/tomcookie/display?type=${type}&page=${pagecount}">尾页</a>
-                </c:if>
+            <div class="tea_page">
+                <table class="page_tab">
+                    <tr>
+                        <c:if test="${cookies.size()!=0}">
+                            <td><a href="${pageContext.request.contextPath}/export/tomcookie/display?type=${type}&page=1">首页</a></td>
+                            <td><a href="${pageContext.request.contextPath}/export/tomcookie/display?type=${type}&page=${current-1}">上一页</a></td>
+                            <td><a href="${pageContext.request.contextPath}/export/tomcookie/display?type=${type}&page=${current+1}">下一页</a></td>
+                            <td><a href="${pageContext.request.contextPath}/export/tomcookie/display?type=${type}&page=${pagecount}">尾页</a></td>
+                        </c:if>
+                    </tr>
+                </table>
             </div>
-
-<%--        <div class="cookie_display">--%>
-<%--            <div class="cookie_img">--%>
-<%--                <img src="${pageContext.request.contextPath}/static/img/cookie2.jpg" alt="" style="width:200px; height:180px;float: left;">--%>
-<%--            </div>--%>
-<%--            <div class="cookie_text">--%>
-<%--                <p>--%>
-<%--                    阔爱小蛋糕--%>
-<%--                </p>--%>
-<%--                <p>--%>
-<%--                    营养价值极高，色香味俱全！--%>
-<%--                </p>--%>
-<%--            </div>--%>
-<%--        </div>--%>
-<%--        <div class="cookie_display">--%>
-<%--            <div class="cookie_img">--%>
-<%--                <img src="${pageContext.request.contextPath}/static/img/cookie2.jpg" alt="" style="width:200px; height:180px;float: left;">--%>
-<%--            </div>--%>
-<%--            <div class="cookie_text">--%>
-<%--                <p>--%>
-<%--                    阔爱小蛋糕--%>
-<%--                </p>--%>
-<%--                <p>--%>
-<%--                    营养价值极高，色香味俱全！--%>
-<%--                </p>--%>
-<%--            </div>--%>
-<%--        </div>--%>
-
     </div>
 </div>
 <div class="bottom">

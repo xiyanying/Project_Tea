@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: xyy
@@ -42,7 +43,7 @@
             top: 20%;
             right: 15%;
         }
-        .logC a button {
+        .logC #addbtn {
             width: 100%;
             height: 45px;
             background-color: #ee7700;
@@ -160,24 +161,31 @@
 <div class="wrap" id="wrap">
     <div class="logGet">
         <!-- 头部提示信息 -->
-        ${errMsg}
+        <c:if test="${errMsg!=null}">
+            <font color="red">${errMsg}</font>
+        </c:if>
         <div class="logD logDtip">
             <p class="p1">登录</p>
         </div>
-        <!-- 输入框 -->
-        <div class="lgD">
-            <img src="${pageContext.request.contextPath}/static/img/5.png" width="20" height="20" alt=""/>
-            <input type="text"
-                   placeholder="输入用户名" name="userName" />
-        </div>
-        <div class="lgD">
-            <img src="${pageContext.request.contextPath}/static/img/5.png" width="20" height="20" alt=""/>
-            <input type="password"
-                   placeholder="输入用户密码" name="passWord" />
-        </div>
-        <div class="logC">
-            <a href="${pageContext.request.contextPath}/info/getAll/cookie" target="_self"><button>登 录</button></a>
-        </div>
+        <form action="${pageContext.request.contextPath}/user/login" method="post">
+            <!-- 输入框 -->
+            <div class="lgD">
+                <img src="${pageContext.request.contextPath}/static/img/5.png" width="20" height="20" alt=""/>
+                <input type="text"
+                       placeholder="输入用户名" name="userName" />
+            </div>
+            <div class="lgD">
+                <img src="${pageContext.request.contextPath}/static/img/5.png" width="20" height="20" alt=""/>
+                <input type="password"
+                       placeholder="输入用户密码" name="passWord" />
+            </div>
+            <div class="logC">
+                <%--<button type="submit" value="登录"/>--%>
+                <input type="submit" id="addbtn" value="登录" target="_self">
+                <%--<a href="${pageContext.request.contextPath}/info/getAll/cookie" target="_self"><button>登 录</button></a>--%>
+            </div>
+        </form>
+
     </div>
 </div>
 

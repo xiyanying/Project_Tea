@@ -3,11 +3,12 @@
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-    <typeAliases>
-        <typeAlias type="com.itcase.project.enetity.Cookie" alias="cookie"/>
-        <typeAlias type="com.itcase.project.enetity.TomCookie" alias="tomCookie"/>
-        <typeAlias type="com.itcase.project.enetity.Advise" alias="advise"/>
-    </typeAliases>
+    <!--<typeAliases>-->
+        <!--<typeAlias type="com.itcase.project.enetity.Cookie" alias="cookie"/>-->
+        <!--<typeAlias type="com.itcase.project.enetity.TomCookie" alias="tomCookie"/>-->
+        <!--<typeAlias type="com.itcase.project.enetity.Advise" alias="advise"/>-->
+        <!--&lt;!&ndash;<typeAlias type="com.itcase.project.enetity.User" alias="user"/>&ndash;&gt;-->
+    <!--</typeAliases>-->
     <!--
     <typeAliases>
         <typeAlias type="com.itcase.project.enetity.Cookie" alias="Cookie"></typeAlias>

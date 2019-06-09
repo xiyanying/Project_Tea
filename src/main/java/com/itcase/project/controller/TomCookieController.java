@@ -3,6 +3,7 @@ package com.itcase.project.controller;
 import com.itcase.project.Dao.TomCookieMapper;
 import com.itcase.project.enetity.Page;
 import com.itcase.project.enetity.TomCookie;
+import com.itcase.project.enetity.User;
 import com.itcase.project.service.impl.TomCookieServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,9 +15,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import javax.servlet.http.HttpServletRequest;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 /**
  * @Author zhanglipeng
@@ -46,8 +47,15 @@ public class TomCookieController {
     }
 
     @RequestMapping(value = "/cookie/select",method = RequestMethod.GET)
-    public ModelAndView tomCookieSelect(@RequestParam(defaultValue = "all") String type, @RequestParam(defaultValue = "1") Integer current, @RequestParam(defaultValue = "5") Integer pageSize, ModelAndView modelAndView){
-        Integer total = mapper.getTotal(type);
+    public ModelAndView tomCookieSelect(@RequestParam(defaultValue = "all") String type, @RequestParam(defaultValue = "1") Integer current, @RequestParam(defaultValue = "5") Integer pageSize, ModelAndView modelAndView,
+                                        HttpServletRequest request){
+        Calendar instance = Calendar.getInstance();
+        instance.setTime(new Date());
+        instance.add(Calendar.DAY_OF_MONTH,1);
+        Date time = instance.getTime();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String tomTime = sdf.format(time);
+        Integer total = mapper.getTotalByTime(type,tomTime);
         int pageCount = total / pageSize;
         if(total % pageSize > 0){
             pageCount++;
@@ -60,11 +68,12 @@ public class TomCookieController {
             current=1;
         }
         Page<List<TomCookie>> listPage = service.selectTomCookie(current, pageSize, type);
-
+        User user = (User) request.getSession().getAttribute("user");
         modelAndView.addObject("data",listPage.getDate());
         modelAndView.addObject("current",current);
         modelAndView.addObject("list",listPage);
         modelAndView.addObject("type",type);
+        modelAndView.addObject("user",user);
         modelAndView.setViewName("/WEB-INF/jsp/tomCookie.jsp");
         return modelAndView;
     }

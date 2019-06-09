@@ -180,7 +180,7 @@
         西安石油大学茶歇后台管理
     </div>
     <div class="top_welcome">
-        ${userName},欢迎您！
+        ${userName}Admin,欢迎您！
     </div>
 </div>
 <div class="manager_main_bottom">

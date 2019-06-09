@@ -33,4 +33,6 @@ public interface TomCookieMapper {
     List<TomCookie> selectByPara(@Param("map") Map<String, Object> map, @Param("type") String type, @Param("dayTime") String dayTime);
 
     Integer getTotal(@Param("type") String type);
+
+    Integer getTotalByTime(@Param("type") String type,@Param("time") String dateTime);
 }

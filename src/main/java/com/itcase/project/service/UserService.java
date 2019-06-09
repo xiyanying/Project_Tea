@@ -1,8 +1,8 @@
 package com.itcase.project.service;
 
-import javax.swing.*;
+import com.itcase.project.enetity.User;
 
 public interface UserService {
 
-    boolean findUser(String userName,String passWord);
+    User findUser(String userName, String passWord);
 }

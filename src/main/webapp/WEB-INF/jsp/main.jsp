@@ -31,6 +31,14 @@
                 alert("已添加")
             });
         }
+        
+        <%--function delOK() {--%>
+            <%--if(confirm("确定删除吗")){--%>
+                <%--document.getElementById("deleteLink").href="${pageContext.request.contextPath}/info/delete/cookie?id=${tcookie.cId}";--%>
+            <%--}else{--%>
+                <%--document.getElementById("deleteLink").href="#";--%>
+            <%--}--%>
+        <%--}--%>
     </script>
     <style  type="text/css">
         *{
@@ -41,7 +49,7 @@
             background-color:black;
         }
         .tab{
-            width: 900px;
+            width: 1000px;
             height: auto;
             text-align: center;
             border: 1px solid seashell;
@@ -84,14 +92,14 @@
         }
         .manager_left{
             width: 200px;
-            height: 87%;
+            height: 1150px;
             background-color:black;
             border: 5px solid rgb(48, 46, 46);
             border-radius: 5px;
         }
         .manager_right{
             width: 1100px;
-            height: 87%;
+            height: 1150px;
             position: absolute;
             top: 40px;
             left: 210px;
@@ -112,7 +120,7 @@
             padding-left: 20px;
         }
         .top_welcome{
-            width: 200px;
+            width: 400px;
             height: 40px;
             color: white;
             text-align: center;
@@ -163,10 +171,10 @@
             background-color: white;
         }
         .page_cookie{
-            width: 60%;
+            width: 80%;
             height: 50px;
             position: absolute;
-            top:450px;
+            top:1050px;
             left:200px;
         }
         .page_all_link{
@@ -269,7 +277,8 @@
         西安石油大学茶歇后台管理
     </div>
     <div class="top_welcome">
-        ${userName},欢迎您！
+        ${user.userName},欢迎您！
+            <a href="${pageContext.request.contextPath}/user/destory">退出</a>
     </div>
 </div>
 <div class="manager_main_bottom">
@@ -324,15 +333,14 @@
                             <td><input type="checkbox" name="ids" value="${tcookie.cId}" /></td>
                             <td>${status.count}</td>
                             <td>${tcookie.cName}</td>
-                            <td>${tcookie.cIntroduce}</td>
+                            <td style="width: 300px;">${tcookie.cIntroduce}</td>
                             <td>${tcookie.cImagePath}</td>
                             <td>${tcookie.cOther}</td>
                             <td>${tcookie.cType}</td>
                             <td>
-                                <a href="${pageContext.request.contextPath}/info/jump/jsp">添加</a>
                                 <a href="${pageContext.request.contextPath}/info/get/cookie?id=${tcookie.cId}">查看</a>
                                 <a href="${pageContext.request.contextPath}/info/get/update?id=${tcookie.cId}">修改</a>
-                                <a href="${pageContext.request.contextPath}/info/delete/cookie?id=${tcookie.cId}">删除</a>
+                                <a href="${pageContext.request.contextPath}/info/delete/cookie?id=${tcookie.cId}" id="deleteLink">删除</a>
                             </td>
                         </tr>
                     </c:forEach>
@@ -348,8 +356,8 @@
                             <div class="page_count_link">
                                 <c:if test="${cookies.size()!=0}">
                                     <a href="${pageContext.request.contextPath}/info/getAll/cookie?type=${type}&page=1">首页</a>
-                                    <a href="${pageContext.request.contextPath}/info/getAll/cookie?type=${type}&page=${current+1}">下一页</a>
                                     <a href="${pageContext.request.contextPath}/info/getAll/cookie?type=${type}&page=${current-1}">上一页</a>
+                                    <a href="${pageContext.request.contextPath}/info/getAll/cookie?type=${type}&page=${current+1}">下一页</a>
                                     <a href="${pageContext.request.contextPath}/info/getAll/cookie?type=${type}&page=${pagecount}">尾页</a>
                                 </c:if>
                             </div>

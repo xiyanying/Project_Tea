@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.itcase.project.Dao.TomCookieMapper">
-    <resultMap id="BaseResultMap" type="tomCookie">
+    <resultMap id="BaseResultMap" type="com.itcase.project.enetity.TomCookie">
         <id column="tom_id" jdbcType="BIGINT" property="tomId"/>
         <result column="cookie_id" jdbcType="BIGINT" property="cId" />
         <result column="cookie_name" jdbcType="VARCHAR" property="cName" />
@@ -38,7 +38,7 @@
   </insert>
   -->
 
-    <insert id="batchCookie" parameterType="tomCookie" useGeneratedKeys="true" keyColumn="tom_id" >
+    <insert id="batchCookie" parameterType="com.itcase.project.enetity.TomCookie" useGeneratedKeys="true" keyColumn="tom_id" >
         insert into work_tomcookie values
         <foreach collection="list" index="index" item="item" separator="," open="" close="">
             (#{item.tomId},#{item.cId},#{item.cName},#{item.cIntroduce},#{item.cImagePath},#{item.cOther},#{item.cType},#{item.createTime})
@@ -64,6 +64,15 @@
         <if test="type!='all'">
             where cookie_type = #{type,jdbcType=VARCHAR}
         </if>
+    </select>
+
+    <select id="getTotalByTime" parameterType="java.lang.String" resultType="java.lang.Integer">
+        select count(*) from work_tomcookie
+        where cookie_creatime = #{time,jdbcType=VARCHAR}
+        <if test="type!='all'">
+            and cookie_type = #{type,jdbcType=VARCHAR}
+        </if >
+
     </select>
 
 

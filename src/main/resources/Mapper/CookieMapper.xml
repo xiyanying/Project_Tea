@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.itcase.project.Dao.CookieMapper">
-    <resultMap id="BaseResultMap" type="cookie">
+    <resultMap id="BaseResultMap" type="com.itcase.project.enetity.Cookie">
         <id column="cookie_id" jdbcType="BIGINT" property="cId" />
         <result column="cookie_name" jdbcType="VARCHAR" property="cName" />
         <result column="cookie_introduce" jdbcType="VARCHAR" property="cIntroduce" />
@@ -46,7 +46,7 @@
   </insert>
   -->
 
-    <insert id="insertCookie" parameterType="cookie" useGeneratedKeys="true" keyColumn="cookie_id" >
+    <insert id="insertCookie" parameterType="com.itcase.project.enetity.Cookie" useGeneratedKeys="true" keyColumn="cookie_id" >
         insert into COOKIE_INFO
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="cId != null">
@@ -89,7 +89,7 @@
             </if>
         </trim>
     </insert>
-    <update id="updateByPrimaryKeySelective" parameterType="cookie">
+    <update id="updateByPrimaryKeySelective" parameterType="com.itcase.project.enetity.Cookie">
         update COOKIE_INFO
         <set>
             <if test="cName != null">
