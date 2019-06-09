@@ -11,7 +11,9 @@
 <head>
     <meta charset="utf-8">
     <title>糕点首页</title>
-    <script type="text/javascript">
+    <script src="../../static/js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" >
+
         function aa() {
             var bb = "";
             var temp = "";
@@ -22,11 +24,11 @@
                     bb = temp + "," + bb;
                 }
             }
-            alert(bb)
+
             $.get('http://localhost:8080/xyy/tom/pitch', {
                 id: bb,
             }, function(req) {
-                alert("已添加" + req)
+                alert("已添加")
             });
         }
     </script>
