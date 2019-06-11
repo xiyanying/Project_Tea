@@ -3,7 +3,7 @@ package com.itcase.project.enetity;
 import java.util.List;
 
 /**
- * @Author zhanglipeng
+ * @Author xyy
  * @Date 2019/5/8 11:20
  */
 public class Page<T> {

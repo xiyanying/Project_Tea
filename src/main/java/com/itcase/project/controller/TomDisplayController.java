@@ -31,12 +31,14 @@ public class TomDisplayController {
 
     @RequestMapping(value = "/display",method = RequestMethod.GET)
     public String displayCookie(Model model, @RequestParam(defaultValue = "all") String type, @RequestParam(defaultValue = "1") Integer page, @RequestParam(defaultValue = "3")Integer pagesize){
+       //获取明天的时间
         Calendar instance = Calendar.getInstance();
         instance.setTime(new Date());
         instance.add(Calendar.DAY_OF_MONTH,1);
         Date time = instance.getTime();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         String tomTime = sdf.format(time);
+        //获取明天某种类型的产品总条数
         Integer total = cookieMapper.getTotalByTime(type,tomTime);
         int pageCount = total / pagesize;
         if(total % pagesize > 0){
@@ -54,7 +56,7 @@ public class TomDisplayController {
         para.put("page",page);
         para.put("pagesize",pagesize);
         JSONObject object = service.dayCookie(tomTime,para);
-        Integer size =(Integer) object.get("total");
+        /*Integer size =(Integer) object.get("total");*/
         List<TomCookie> cookies = (List<TomCookie>)object.get("cookies");
 
         model.addAttribute("pagecount",pageCount);

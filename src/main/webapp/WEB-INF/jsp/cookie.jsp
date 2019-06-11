@@ -20,9 +20,10 @@
         }
         .detailTab{
             text-align: center;
-            width: 450px;
+            width: 850px;
             height: 350px;
         }
+
         a{
             text-decoration: none;
             color: rgb(141, 67, 13);
@@ -130,23 +131,35 @@
             width: 30%;
             height: 50px;
             font-family: 'Times New Roman', Times, serif;
-            font-size: 22px;
+            font-size: 24px;
             color: brown;
             text-align: center;
             position: absolute;
-            top:20px;
-            left: 20%;
+            top:27px;
+            left: 30%;
         }
         #detailDiv{
-            height: 440px;
-            width: 45%;
-            background-image: url(/static/img/bg.jpg);
+            height: 400px;
+            width: 850px;
             position: absolute;
-            top: 10%;
-            left: 15%;
+            top: 16%;
+            left: 7%;
             border: 2px solid papayawhip;
         }
         #backDiv{
+            width: 100px;
+            height: 40px;
+            border: none;
+            background-color: black;
+            padding-top: 5px;
+            text-align: center;
+            font-size: 18px;
+            text-decoration: none;
+            border-radius:5px;
+            position: absolute;
+            top: 425px;
+            left:43%;
+            align-self: center;/*
             display: inline-block;
             width: 90px;
             background-color: black;
@@ -154,13 +167,22 @@
             top:430px;
             left:35%;
             padding: 10px 5px;
-            border-radius:5px;
+            border-radius:5px;*/
         }
-        .textTd input {
+
+        input{
             width: 270px;
             height: 40px;
-            font-size: 18px;
             text-indent: 1.5rem;
+            font-size: 18px;
+            margin: 10px;
+        }
+        textarea{
+            width: 270px;
+            height: 180px;
+            text-indent: 1.5rem;
+            font-size: 18px;
+            margin: 10px;
         }
     </style>
 </head>
@@ -206,33 +228,31 @@
                 <div id="detailDiv">
                     <table class="detailTab">
                         <tr>
-                            <td>糕点名称:</td>
+                            <td class="tdTit">糕点名称:</td>
                             <td class="textTd">
-                                <input name="cName" value="${acookie.cName}"  />
+                                <input name="cName" value="${acookie.cName}" readonly />
+                            </td>
+                            <td class="tdTit">糕点图片路径:</td>
+                            <td class="textTd">
+                                <input name="cImagePath" value="${acookie.cImagePath}" readonly/>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="tdTit" rowspan="2">糕点介绍:</td>
+                            <td class="textTd" rowspan="2">
+                                <textarea name="cIntroduce" readonly >${acookie.cIntroduce}</textarea>
+                                <%--<input type="text" name="cIntroduce" value="${acookie.cIntroduce}"/>--%>
+                            </td>
+                            <td class="tdTit">糕点类型:</td>
+                            <td class="textTd">
+                                <input name="cType" value="${acookie.cType}" readonly>
                             </td>
                         </tr>
                         <tr>
-                            <td>糕点介绍:</td>
+                            <td class="tdTit">其他:</td>
                             <td class="textTd">
-                                <input type="text" name="cIntroduce" value="${acookie.cIntroduce}"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>糕点图片路径:</td>
-                            <td class="textTd">
-                                <input name="cImagePath" value="${acookie.cImagePath}"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>糕点类型:</td>
-                            <td class="textTd">
-                                <input name="cType" value="${acookie.cType}">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>其他:</td>
-                            <td class="textTd">
-                                <input name="cOther" value="${acookie.cOther}">
+                                <input name="cOther" value="${acookie.cOther}" readonly>
                             </td>
                         </tr>
                     </table>

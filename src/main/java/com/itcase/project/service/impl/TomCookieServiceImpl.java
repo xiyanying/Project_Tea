@@ -117,14 +117,14 @@ public class TomCookieServiceImpl implements TomCookieService {
         Integer start = (page-1) * pagesize;
         map.put("start",start);
         map.put("end",pagesize);
-        Integer size = null;
+        /*Integer size = null;
         if("all".equals(type)){
             size = tomCookieMapper.getTotal(type);
         }else {
             size = tomCookieMapper.getTotal(type);
-        }
+        }*/
         List<TomCookie> cookies = tomCookieMapper.selectByPara(map,type,dayTime);
-        object.put("total",size);
+        /*object.put("total",size);*/
         object.put("cookies",cookies);
         return object;
     }

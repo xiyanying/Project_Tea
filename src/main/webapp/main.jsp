@@ -4,15 +4,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>西安石油大学茶歇网站首页
-    </title>
-    <!-- <link  href="../css/first_main.css" type="text/css"  rel="stylesheet"/> -->
-
-    <!-- <script type="text/javascript">
-        window.onload=function(){
-            document.getElementById("mid_bg").innerHTML = '<object type="text/html" data="tea_page_main.html" width="100%" height="100%"></object>';
-        }
-    </script> -->
+    <title>西安石油大学茶歇网站首页</title>
     <style type="text/css">
         body{
             padding: 0px;
@@ -61,12 +53,7 @@
         .img_xsyu{
             height: 80px;
         }
-        .img_tit{
-            width: 170px;
-            position: absolute;
-            left: 350px;
-            top: 50px;
-        }
+
         .title_tab{
             width: 500px;
             height: 50px;
@@ -168,31 +155,19 @@
         <c:forEach items="${imgs}" var="img" varStatus="status">
             imgList[${status.count-1}]="${pageContext.request.contextPath}/static/img/${img}";
         </c:forEach>
-        <%--imgList[0]="${pageContext.request.contextPath}/static/img/cookie1.jpg";--%>
-        <%--imgList[1]="${pageContext.request.contextPath}/static/img/cookie2.jpg";--%>
-        <%--imgList[2]="${pageContext.request.contextPath}/static/img/cookie3.jpg";--%>
-        <%--imgList[3]="${pageContext.request.contextPath}/static/img/cookie4.jpg";--%>
-        <%--imgList[4]="${pageContext.request.contextPath}/static/img/cookie5.jpg";--%>
+
         //自动变化“小圆点”
         var li_imgList = new Array();
         <c:forEach items="${imgs}" var="img" varStatus="status">
             li_imgList[${status.count-1}]="i${status.count}";
         </c:forEach>
-        // li_imgList[0]="i1";
-        // li_imgList[1]="i2";
-        // li_imgList[2]="i3";
-        // li_imgList[3]="i4";
-        // li_imgList[4]="i5";
+
         //鼠标触碰修改
         var liList = new Array();
         <c:forEach items="${imgs}" var="img" varStatus="status">
             liList[${status.count-1}]="p${status.count}";
         </c:forEach>
-        // liList[0]="p1";
-        // liList[1]="p2";
-        // liList[2]="p3";
-        // liList[3]="p4";
-        // liList[4]="p5";
+
 
         //自动循环
         var int=self.setInterval("loop()",2000);

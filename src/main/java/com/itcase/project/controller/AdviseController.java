@@ -30,7 +30,7 @@ public class AdviseController {
         // 数据校验
         if(bindingResult.hasErrors()){
             for (FieldError fieldError : bindingResult.getFieldErrors()){
-               message.add(fieldError.getDefaultMessage());
+                message.add(fieldError.getDefaultMessage());
             }
             model.addAttribute("error",message);
             return "/WEB-INF/xsyuJsp/advise.jsp";

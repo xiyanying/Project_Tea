@@ -27,7 +27,7 @@
 
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from advise
-    where cookie_id = #{id,jdbcType=BIGINT}
+    where advise_id = #{id,jdbcType=BIGINT}
   </delete>
 
     <select id="selectByCondtion" resultMap="BaseResultMap">

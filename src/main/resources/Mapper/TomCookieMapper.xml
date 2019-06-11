@@ -15,9 +15,6 @@
     tom_id,cookie_id, cookie_name, cookie_introduce, cookie_img_path, cookie_other,cookie_type,cookie_creatime
     </sql>
 
-
-
-
     <delete id="deleteCookieById" parameterType="java.lang.Integer">
     delete from work_tomcookie
     where tom_id = #{id,jdbcType=BIGINT}
@@ -74,6 +71,4 @@
         </if >
 
     </select>
-
-
 </mapper>

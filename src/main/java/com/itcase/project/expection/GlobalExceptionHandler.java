@@ -36,6 +36,7 @@ public class GlobalExceptionHandler {
      * @return
      * @throws Exception
      */
+    @ResponseBody
     @ExceptionHandler(value = Exception.class)
     public ResponseData defaultErrorHandler(Exception ex) throws Exception {
         logger.error("", ex);

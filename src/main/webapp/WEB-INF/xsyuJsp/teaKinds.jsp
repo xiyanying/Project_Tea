@@ -163,9 +163,6 @@
             /*正面作为背面*/
             transform: rotateY(180deg);
         }
-        /*.cookie_display:hover{
-            background-color: beige;
-        }*/
         .cookie_display,.cookie_intro{
             position: absolute;
             top: 0;
@@ -241,7 +238,7 @@
                     <div class="cookie_img">
                         <img src="${pageContext.request.contextPath}/static/img/${cok.cImagePath}" alt="" style="width:200px; height:170px;">
                         <p>
-                                ${cok.cName}
+                            ${cok.cName}
                         </p>
                     </div>
                 </div>

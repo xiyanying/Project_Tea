@@ -7,7 +7,7 @@ import com.itcase.project.enetity.TomCookie;
 import java.util.List;
 
 /**
- * @Author zhanglipeng
+ * @Author xyy
  * @Date 2019/5/7 22:35
  */
 public interface TomCookieService {

@@ -92,14 +92,14 @@
         }
         .manager_left{
             width: 200px;
-            height: 1150px;
+            height: 1050px;
             background-color:black;
             border: 5px solid rgb(48, 46, 46);
             border-radius: 5px;
         }
         .manager_right{
             width: 1100px;
-            height: 1150px;
+            height: 1050px;
             position: absolute;
             top: 40px;
             left: 210px;
@@ -174,7 +174,7 @@
             width: 80%;
             height: 50px;
             position: absolute;
-            top:1050px;
+            top:950px;
             left:200px;
         }
         .page_all_link{
@@ -248,11 +248,11 @@
             width: 30%;
             height: 50px;
             font-family: 'Times New Roman', Times, serif;
-            font-size: 22px;
+            font-size: 24px;
             color: brown;
             text-align: center;
             position: absolute;
-            top:20px;
+            top:30px;
             left: 30%;
         }
         .left_add{

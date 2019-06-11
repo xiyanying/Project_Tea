@@ -23,39 +23,51 @@
         }
         .addTab{
             text-align: center;
-            width: 450px;
+            width: 850px;
             height: 350px;
         }
-        .addTab tr input,.addTab tr select {
+        input,select{
             width: 270px;
             height: 40px;
             text-indent: 1.5rem;
             font-size: 18px;
             margin: 10px;
         }
+        .tdTit{
+            font-size: 18px;
+            width: 100px;
+            height: 40px;
+        }
+        textarea{
+            width: 270px;
+            height: 180px;
+            text-indent: 1.5rem;
+            font-size: 18px;
+            margin: 10px;
+        }
         #addDiv{
-            height: 440px;
-            width: auto;
-            background-image: url(/static/img/fruit1.png);
+            height: 400px;
+            width: 850px;
             position: absolute;
-            top: 10%;
-            left: 15%;
+            top: 16%;
+            left: 7%;
             border: 2px solid papayawhip;
         }
         #addbtn{
-            width: 80px;
+            width: 90px;
             height: 40px;
             border: none;
             background-color: black;
-            margin: 10px 0 0;
             color: rgb(141, 67, 13);
             text-align: center;
             font-size: 18px;
             text-decoration: none;
             border-radius:5px;
             position: absolute;
-            top: 430px;
-            left:33%;
+            top: 415px;
+            left:43%;
+            padding-right: 13px;
+            align-self: center;
         }
         a{
             text-decoration: none;
@@ -109,15 +121,7 @@
             color: aliceblue;
             padding-left: 20px;
         }
-        .top_welcome{
-            width: 200px;
-            height: 40px;
-            color: white;
-            text-align: center;
-            position: absolute;
-            right: 10%;
-            padding-top: 13px;
-        }
+
         .left_query{
             width: 123px;
             height: 35px;
@@ -164,12 +168,19 @@
             width: 30%;
             height: 50px;
             font-family: 'Times New Roman', Times, serif;
-            font-size: 22px;
+            font-size: 24px;
             color: brown;
             text-align: center;
             position: absolute;
-            top:20px;
-            left: 20%;
+            top:27px;
+            left: 30%;
+        }
+        .sameMassage{
+            width: 200px;
+            height: auto;
+            border: maroon;
+            color: red;
+            font-size: 24px;
         }
     </style>
 </head>
@@ -210,6 +221,9 @@
                 <div class="add_title">
                     <p><b>糕点信息添加</b></p>
                 </div>
+                <div class="sameMassage">
+                    ${sameCookies}
+                </div>
                 <form action="${pageContext.request.contextPath}/info/add/cookie" method="post" enctype="multipart/form-data"><br>
                     <div id="addDiv">
                         <c:if test="${errors!=null && errors.size()>0}">
@@ -219,25 +233,22 @@
                         </c:if>
                         <table class="addTab">
                             <tr>
-                                <td>糕点名称:</td>
+                                <td class="tdTit">糕点名称:</td>
                                 <td class="textTd">
                                     <input name="cName" placeholder="名称尽量简洁"/>
                                 </td>
-                            </tr>
-                            <tr>
-                                <td>糕点介绍:</td>
-                                <td class="textTd">
-                                    <input type="text" name="cIntroduce" placeholder="字数不要超过500字"/>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>糕点图片路径:</td>
+
+                                <td class="tdTit">糕点图片路径:</td>
                                 <td class="textTd">
                                     <input type="file" name="upload"/>
                                 </td>
                             </tr>
                             <tr>
-                                <td>糕点类型:</td>
+                                <td rowspan="2" class="tdTit">糕点介绍:</td>
+                                <td class="textTd" rowspan="2" >
+                                    <textarea name="cIntroduce" maxlength="200" placeholder="字数不要超过200字" ></textarea>
+                                </td>
+                                <td class="tdTit">糕点类型:</td>
                                 <td class="textTd">
                                     <select name="cType">
                                         <option value="cookie">糕点</option>
@@ -246,8 +257,9 @@
                                     </select>
                                 </td>
                             </tr>
+
                             <tr>
-                                <td>其他:</td>
+                                <td class="tdTit">其他:</td>
                                 <td class="textTd">
                                     <input name="cOther" placeholder="补充内容添加">
                                 </td>

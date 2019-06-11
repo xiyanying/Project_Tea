@@ -52,7 +52,12 @@ public class InfoController {
             }
             model.addAttribute("errors",message);
             return "/WEB-INF/jsp/add.jsp";
-
+        }
+        //添加糕点的名称重复性校验
+        int cookieCount = cookieMapper.getCookieCount(cookie.getcName());
+        if (cookieCount!=0){
+            model.addAttribute("sameCookies","请勿重复添加！");
+            return "/WEB-INF/jsp/add.jsp";
         }
         String localpath = "D:\\apache-tomcat-7.0.93\\webapps\\static\\img\\";
         String fileName = null;

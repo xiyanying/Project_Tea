@@ -63,4 +63,11 @@ public interface CookieMapper {
      * @return
      */
      List<Cookie> getBatch(List<Integer> cids);
+
+    /**
+     *  重复性校验（添加糕点）
+     * @param cookieName
+     * @return
+     */
+     Integer getCookieCount(String cookieName);
 }
